@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -19,41 +19,67 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="L78-32-w7R">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FeF-kj-4yz" customClass="DrawingView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xwq-z3-u99" customClass="DrawingView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qlb-L2-D15">
                                 <rect key="frame" x="13" y="537" width="40" height="20"/>
                                 <state key="normal" image="elaser.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="elase:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T59-8a-SX8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="py3-Bn-4U6">
                                 <rect key="frame" x="61" y="542" width="40" height="15"/>
                                 <state key="normal" image="white.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="chook1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cfr-vp-edV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byt-gz-kAa">
                                 <rect key="frame" x="103" y="542" width="40" height="15"/>
                                 <state key="normal" image="red.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="chook2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EAh-JK-bkQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ezj-n7-Xd0">
                                 <rect key="frame" x="141" y="542" width="40" height="15"/>
                                 <state key="normal" image="blue.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="chook3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t8a-9T-fyJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFy-0u-COy">
                                 <rect key="frame" x="184" y="542" width="40" height="15"/>
                                 <state key="normal" image="green.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="chook4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CbM-fQ-VPk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1X-en-KZF">
                                 <rect key="frame" x="225" y="542" width="40" height="15"/>
                                 <state key="normal" image="yellow.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="chook5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="84l-TT-zuR"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVj-lV-B7q">
                                 <rect key="frame" x="265" y="539" width="40" height="20"/>
@@ -66,11 +92,15 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="aImageView" destination="L78-32-w7R" id="djq-hx-UIN"/>
                         <outlet property="chook1" destination="py3-Bn-4U6" id="odw-Ks-l9w"/>
                         <outlet property="chook2" destination="byt-gz-kAa" id="UH5-cc-rWI"/>
                         <outlet property="chook3" destination="Ezj-n7-Xd0" id="Jdx-8W-dBZ"/>
                         <outlet property="chook4" destination="pFy-0u-COy" id="EN0-wU-Rda"/>
+                        <outlet property="curDrawingView" destination="xwq-z3-u99" id="1F0-kN-aZv"/>
                         <outlet property="elaser" destination="Qlb-L2-D15" id="Wm1-md-5Nb"/>
+                        <outlet property="pastDrawingView" destination="FeF-kj-4yz" id="B1n-TP-OxV"/>
+                        <outlet property="tab" destination="pVj-lV-B7q" id="Phb-xT-tAy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
