@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     @IBOutlet weak var chook1: UIButton!
     @IBOutlet weak var elaser: UIButton!
@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var aImageView: UIImageView!
     @IBOutlet var pastDrawingView: DrawingView!
     @IBOutlet var curDrawingView: DrawingView!
+    var bannerView_:GADBannerView!
     var penWhite:CGFloat
     var penRed:CGFloat
     var penYellow:CGFloat
@@ -123,11 +124,12 @@ class ViewController: UIViewController {
         if !self.billingMode {
             let alert = UIAlertController(title: "どうする？？", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
             let button1 = UIAlertAction(title: "写真を選ぶ", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
+                self.selectLibraly()
                 
                 
             }
             let button2 = UIAlertAction(title: "ライブラリに保存", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
-                
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             }
             let button3 = UIAlertAction(title: "黒板を表示", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
                 
@@ -159,6 +161,7 @@ class ViewController: UIViewController {
         }else{
             let alert = UIAlertController(title: "どうする？？", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
             let button1 = UIAlertAction(title: "写真を選ぶ", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
+                self.selectLibraly()
                 
             }
             let button2 = UIAlertAction(title: "ライブラリに保存", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
@@ -194,9 +197,16 @@ class ViewController: UIViewController {
     func selectLibraly() {
         self.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         
-        if UIImagePickerController.isSourceTypeAvailable(self.sourceType) {
-            
+        if !UIImagePickerController.isSourceTypeAvailable(self.sourceType) {
+            return
         }
+        
+        var imagePicker:UIImagePickerController = UIImagePickerController()
+        imagePicker.sourceType = sourceType
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        
+        self.presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     func Allstand(stand:Int){
@@ -253,6 +263,17 @@ class ViewController: UIViewController {
     
     func store() {
         
+    }
+    
+    func onTouchUpInsideBtnCapture(){
+        elaser.hidden=true
+        chook1.hidden=true
+        chook2.hidden=true
+        chook3.hidden=true
+        chook4.hidden=true
+        chook5.hidden=true
+        tab.hidden=true
+        bannerView_.hidden=true
     }
     
     
