@@ -1,0 +1,13 @@
+PODS:
+  - Google-Mobile-Ads-SDK (6.12.0)
+  - SVProgressHUD (HEAD based on 1.0)
+
+DEPENDENCIES:
+  - Google-Mobile-Ads-SDK (~> 6.10)
+  - SVProgressHUD (HEAD)
+
+SPEC CHECKSUMS:
+  Google-Mobile-Ads-SDK: b1b5cfd1b604a8412faa5536586b13a4b640f344
+  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
+
+COCOAPODS: 0.32.1

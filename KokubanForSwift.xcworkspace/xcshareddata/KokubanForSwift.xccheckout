@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>14AD539E-59C8-4E5F-9064-FBCF0542C29B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>KokubanForSwift</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>49D3179B0D24BE585B5B41449F8FD58A668E1279</key>
+		<string>https://github.com/shiratsu/kokubanforswift.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>KokubanForSwift.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>49D3179B0D24BE585B5B41449F8FD58A668E1279</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/shiratsu/kokubanforswift.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>49D3179B0D24BE585B5B41449F8FD58A668E1279</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>49D3179B0D24BE585B5B41449F8FD58A668E1279</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KokubanForSwift</string>
+		</dict>
+	</array>
+</dict>
+</plist>
