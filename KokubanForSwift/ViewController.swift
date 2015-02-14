@@ -31,6 +31,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     var select_chook:Int
     var kokubanMode:Bool
     var billingMode:Bool
+    var yukiMode:Bool
     var aryStroke:NSMutableArray
     var sourceType:UIImagePickerControllerSourceType
     
@@ -130,9 +131,12 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             }
             let button2 = UIAlertAction(title: "ライブラリに保存", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+                self.onTouchUpInsideBtnCapture()
             }
             let button3 = UIAlertAction(title: "黒板を表示", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
-                
+                let myBoundSize: CGSize = UIScreen.mainScreen().bounds.size
+                self.aImageView.frame = CGRectMake(0, 0, myBoundSize.width, myBoundSize.height)
+                self.aImageView.image = UIImage(named: "back.png")
             }
             let button4 = UIAlertAction(title: "ひまわり", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
                 
@@ -165,12 +169,18 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
                 
             }
             let button2 = UIAlertAction(title: "ライブラリに保存", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+                self.onTouchUpInsideBtnCapture()
                 
             }
             let button3 = UIAlertAction(title: "黒板を表示", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
-                
+                let myBoundSize: CGSize = UIScreen.mainScreen().bounds.size
+                self.aImageView.frame = CGRectMake(0, 0, myBoundSize.width, myBoundSize.height)
+                self.aImageView.image = UIImage(named: "back.png")
             }
             let button4 = UIAlertAction(title: "ひまわり", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
+                self.kokubanMode = false
+                self.yukiMode = true
                 
             }
             let button5 = UIAlertAction(title: "チョークを使う", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
@@ -209,6 +219,14 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         self.presentViewController(imagePicker, animated: true, completion: nil)
     }
     
+    func takeGrabScreenImage() -> UIImage {
+        UIGraphicsBeginImageContext(aImageView.frame.size)
+        
+        var image:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
     func Allstand(stand:Int){
         
         switch select_chook{
@@ -237,24 +255,24 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         switch select_chook{
             case 1:
                 self.chook1.transform = CGAffineTransformMakeRotation(10)
-            break
+                break
             case 2:
                 self.chook2.transform = CGAffineTransformMakeRotation(10)
-            break
+                break
             case 3:
                 self.chook3.transform = CGAffineTransformMakeRotation(10)
-            break
+                break
             case 4:
                 self.chook4.transform = CGAffineTransformMakeRotation(10)
-            break
+                break
             case 5:
                 self.chook5.transform = CGAffineTransformMakeRotation(10)
-            break
+                break
             case 6:
                 self.tab.enabled		= false
-            break
+                break
             default:
-            break;
+                break
             
         }
         select_chook = stand
@@ -274,8 +292,50 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         chook5.hidden=true
         tab.hidden=true
         bannerView_.hidden=true
+        
+        var img:UIImage = takeGrabScreenImage()
+        UIImageWriteToSavedPhotosAlbum(img, self, "image:didFinishSavingWithError:contextInfo:", nil)
+        
     }
     
+    func image(image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutablePointer<Void>) {
+        
+        elaser.hidden=false
+        chook1.hidden=false
+        chook2.hidden=false
+        chook3.hidden=false
+        chook4.hidden=false
+        chook5.hidden=false
+        tab.hidden=false
+        bannerView_.hidden=false
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        if error != nil {
+            //プライバシー設定不許可など書き込み失敗時は -3310 (ALAssetsLibraryDataUnavailableError)
+            println(error.code)
+            
+            let alert = UIAlertController(title: "エラー", message: "保存に失敗しました", preferredStyle: UIAlertControllerStyle.Alert)
+            let button1 = UIAlertAction(title: "閉じる", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
+                
+            }
+            alert.addAction(button1)
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        }else{
+            
+            let alert = UIAlertController(title: "成功", message: "保存しました", preferredStyle: UIAlertControllerStyle.Alert)
+            let button1 = UIAlertAction(title: "閉じる", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
+                
+            }
+            alert.addAction(button1)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    
+    func writeImage(img: UIImage,fileName:String) -> Bool{
+        return true
+    }
     
     
     override func viewDidLoad() {
