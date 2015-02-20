@@ -20,6 +20,7 @@
 		58198DD11A636ADA0050F69A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58198DD01A636ADA0050F69A /* MobileCoreServices.framework */; };
 		58198DD31A636AF90050F69A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58198DD21A636AF90050F69A /* QuartzCore.framework */; };
 		58198DD91A63701D0050F69A /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 58198DD81A63701D0050F69A /* Common.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		58E8B57F1A95F296006EF840 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E8B57E1A95F296006EF840 /* Line.swift */; };
 		58F9A3B819F6967300D5929F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F9A3B719F6967300D5929F /* AppDelegate.swift */; };
 		58F9A3BA19F6967300D5929F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F9A3B919F6967300D5929F /* ViewController.swift */; };
 		58F9A3BD19F6967300D5929F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58F9A3BB19F6967300D5929F /* Main.storyboard */; };
@@ -83,6 +84,7 @@
 		58198DD21A636AF90050F69A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		58198DD71A63701D0050F69A /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		58198DD81A63701D0050F69A /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
+		58E8B57E1A95F296006EF840 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		58F9A3B219F6967300D5929F /* KokubanForSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KokubanForSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F9A3B619F6967300D5929F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58F9A3B719F6967300D5929F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				58F9A3BE19F6967300D5929F /* Images.xcassets */,
 				58F9A3C019F6967300D5929F /* LaunchScreen.xib */,
 				58F9A3B519F6967300D5929F /* Supporting Files */,
+				58E8B57E1A95F296006EF840 /* Line.swift */,
 			);
 			path = KokubanForSwift;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				58F9A3BA19F6967300D5929F /* ViewController.swift in Sources */,
 				58F9A3B819F6967300D5929F /* AppDelegate.swift in Sources */,
 				58F9A41619F953CE00D5929F /* DrawingView.m in Sources */,
+				58E8B57F1A95F296006EF840 /* Line.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,9 +593,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = KokubanForSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT)/KokubanForSwift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -604,9 +611,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = KokubanForSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT)/KokubanForSwift-Bridging-Header.h";
 			};
 			name = Release;

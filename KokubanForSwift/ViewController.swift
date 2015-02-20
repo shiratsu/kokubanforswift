@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,GADBannerViewDelegate {
     
     @IBOutlet weak var chook1: UIButton!
     @IBOutlet weak var elaser: UIButton!
@@ -139,10 +139,12 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
                 self.aImageView.image = UIImage(named: "back.png")
             }
             let button4 = UIAlertAction(title: "ひまわり", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
-                
+                self.kokubanMode = false
+                self.yukiMode = true
             }
             let button5 = UIAlertAction(title: "チョークを使う", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
-                
+                self.kokubanMode = true
+                self.yukiMode = false
             }
             let button6 = UIAlertAction(title: "線の太さを変える", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
                 
@@ -184,6 +186,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
                 
             }
             let button5 = UIAlertAction(title: "チョークを使う", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
+                self.kokubanMode = true
+                self.yukiMode = false
                 
             }
             let button6 = UIAlertAction(title: "線の太さを変える", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
@@ -279,9 +283,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
     }
     
-    func store() {
-        
-    }
+    
     
     func onTouchUpInsideBtnCapture(){
         elaser.hidden=true
@@ -332,15 +334,58 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         }
     }
     
-    
-    func writeImage(img: UIImage,fileName:String) -> Bool{
-        return true
+    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        
     }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        
+    }
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //白固定
+        self.setPenColor(index: 0)
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Phone || UIDevice.currentDevice().userInterfaceIdiom == .Unspecified {
+            
+            bannerView_ = GADBannerView()
+            
+            bannerView_ = GADBannerView(adSize:kGADAdSizeBanner)
+            
+            bannerView_.frame.origin = CGPointMake(0, 0)
+            bannerView_.frame.size = CGSizeMake(self.view.frame.size.width,50)
+            
+        }else{
+            
+            bannerView_ = GADBannerView()
+            
+            bannerView_ = GADBannerView(adSize:kGADAdSizeBanner)
+            
+            bannerView_.frame.origin = CGPointMake(0, 0)
+            bannerView_.frame.size = CGSizeMake(self.view.frame.size.width,90)
+            
+            
+        }
+        
+        bannerView_.adUnitID = "a14ec8b1eda2dca"
+        bannerView_.delegate = self
+        bannerView_.rootViewController = self
+        
+        var request:GADRequest = GADRequest()
+        request.testDevices = [GAD_SIMULATOR_ID]
+        
+        bannerView_.loadRequest(request)
+        self.view.addSubview(bannerView_)
+        
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func gotoNext(){
+        
     }
 
     override func didReceiveMemoryWarning() {
