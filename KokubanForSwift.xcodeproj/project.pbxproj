@@ -11,7 +11,6 @@
 		58198DBF1A636A210050F69A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58198DBE1A636A210050F69A /* AudioToolbox.framework */; };
 		58198DC11A636A490050F69A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58198DC01A636A490050F69A /* MessageUI.framework */; };
 		58198DC31A636A760050F69A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58198DC21A636A760050F69A /* UIKit.framework */; };
-		58198DC51A636A850050F69A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58198DC41A636A850050F69A /* AdSupport.framework */; };
 		58198DC71A636A9C0050F69A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58198DC61A636A9C0050F69A /* SystemConfiguration.framework */; };
 		58198DC91A636AA50050F69A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58198DC81A636AA50050F69A /* CFNetwork.framework */; };
 		58198DCB1A636AAF0050F69A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58198DCA1A636AAF0050F69A /* CoreGraphics.framework */; };
@@ -56,7 +55,6 @@
 		58F9A40E19F6A44700D5929F /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F9A3F219F6A44700D5929F /* back.png */; };
 		58F9A40F19F6A44700D5929F /* elaser.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F9A3F319F6A44700D5929F /* elaser.png */; };
 		58F9A41619F953CE00D5929F /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F9A41519F953CE00D5929F /* DrawingView.m */; };
-		5DD4B7D9522641F98AAAE8A6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7DC891635E2443695729A3F /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,12 +140,10 @@
 				58198DCB1A636AAF0050F69A /* CoreGraphics.framework in Frameworks */,
 				58198DC91A636AA50050F69A /* CFNetwork.framework in Frameworks */,
 				58198DC71A636A9C0050F69A /* SystemConfiguration.framework in Frameworks */,
-				58198DC51A636A850050F69A /* AdSupport.framework in Frameworks */,
 				58198DC31A636A760050F69A /* UIKit.framework in Frameworks */,
 				58198DC11A636A490050F69A /* MessageUI.framework in Frameworks */,
 				58198DBF1A636A210050F69A /* AudioToolbox.framework in Frameworks */,
 				58198DBD1A636A190050F69A /* AVFoundation.framework in Frameworks */,
-				5DD4B7D9522641F98AAAE8A6 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,11 +300,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58F9A3D119F6967400D5929F /* Build configuration list for PBXNativeTarget "KokubanForSwift" */;
 			buildPhases = (
-				7A4443D64CBC4B289EA47AEC /* Check Pods Manifest.lock */,
 				58F9A3AE19F6967300D5929F /* Sources */,
 				58F9A3AF19F6967300D5929F /* Frameworks */,
 				58F9A3B019F6967300D5929F /* Resources */,
-				A2610CA2463C43799B60AAEA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -361,6 +355,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -422,39 +417,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		7A4443D64CBC4B289EA47AEC /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		A2610CA2463C43799B60AAEA /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		58F9A3AE19F6967300D5929F /* Sources */ = {
@@ -541,7 +503,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -578,7 +540,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -596,11 +558,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = KokubanForSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT)/KokubanForSwift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -614,10 +578,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = KokubanForSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT)/KokubanForSwift-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

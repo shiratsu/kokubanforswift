@@ -20,7 +20,6 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBOutlet weak var aImageView: UIImageView!
     @IBOutlet var pastDrawingView: DrawingView!
     @IBOutlet var curDrawingView: DrawingView!
-    var bannerView_:GADBannerView!
     var penWhite:CGFloat
     var penRed:CGFloat
     var penYellow:CGFloat
@@ -33,7 +32,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     var billingMode:Bool
     var yukiMode:Bool
     var aryStroke:NSMutableArray
-    var sourceType:UIImagePickerControllerSourceType
+    var sourceType:UIImagePickerController.SourceType
     
     
 
@@ -60,96 +59,96 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     
     @IBAction func chook1(sender: AnyObject) {
-        Allstand(1)
+        Allstand(stand: 1)
         setPenColor(index: 0)
         kokubanMode = true
     }
     @IBAction func chook2(sender: AnyObject) {
-        Allstand(2)
+        Allstand(stand: 2)
         setPenColor(index: 1)
         kokubanMode = true
     }
     @IBAction func chook3(sender: AnyObject) {
-        Allstand(3)
+        Allstand(stand: 3)
         setPenColor(index: 2)
         kokubanMode = true
     }
     @IBAction func chook4(sender: AnyObject) {
-        Allstand(4)
+        Allstand(stand: 4)
         setPenColor(index: 3)
         kokubanMode = true
     }
     @IBAction func chook5(sender: AnyObject) {
-        Allstand(5)
+        Allstand(stand: 5)
         setPenColor(index: 4)
         kokubanMode = true
         
     }
     
     func elase() {
-        Allstand(10)
+        Allstand(stand: 10)
         setPenColor(index: 5)
         kokubanMode = true
         
     }
     @IBAction func showEraseSheet(sender: AnyObject) {
         
-        let alert = UIAlertController(title: "どうする？？", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-        let okButton = UIAlertAction(title: "一つ前に戻る", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
-            println("Ok Selected")
-            self.kokubanMode = true
+        let alert = UIAlertController(title: "どうする？？", message: nil, preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "一つ前に戻る", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
+            print("Ok Selected")
+            kokubanMode = true
             if self.aryStroke.count > 0 {
-                self.aryStroke.removeLastObject()
-                self.pastDrawingView.aryData = self.aryStroke
-                self.pastDrawingView.setNeedsDisplay()
+                aryStroke.removeLastObject()
+                pastDrawingView.aryData = aryStroke
+                pastDrawingView.setNeedsDisplay()
             }
             
         }
-        let cancelButton = UIAlertAction(title: "全消し", style: UIAlertActionStyle.Cancel) { (cancelSelected) -> Void in
-            println("Cancel Selected")
+        let cancelButton = UIAlertAction(title: "全消し", style: UIAlertAction.Style.cancel) { [self] (cancelSelected) -> Void in
+            print("Cancel Selected")
             
-            self.kokubanMode = true
-            if self.aryStroke.count > 0 {
-                self.aryStroke.removeAllObjects()
-                self.pastDrawingView.aryData = self.aryStroke
-                self.pastDrawingView.setNeedsDisplay()
+            kokubanMode = true
+            if aryStroke.count > 0 {
+                aryStroke.removeAllObjects()
+                pastDrawingView.aryData = aryStroke
+                pastDrawingView.setNeedsDisplay()
             }
         }
         alert.addAction(okButton)
         alert.addAction(cancelButton)
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
         
     }
     @IBAction func showActionSheet(sender: AnyObject) {
-        if !self.billingMode {
-            let alert = UIAlertController(title: "どうする？？", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-            let button1 = UIAlertAction(title: "写真を選ぶ", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
+        if !billingMode {
+            let alert = UIAlertController(title: "どうする？？", message: nil, preferredStyle: UIAlertController.Style.alert)
+            let button1 = UIAlertAction(title: "写真を選ぶ", style: UIAlertAction.Style.default) { (okSelected) -> Void in
                 self.selectLibraly()
                 
                 
             }
-            let button2 = UIAlertAction(title: "ライブラリに保存", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            let button2 = UIAlertAction(title: "ライブラリに保存", style: UIAlertAction.Style.default) { (okSelected) -> Void in
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
                 self.onTouchUpInsideBtnCapture()
             }
-            let button3 = UIAlertAction(title: "黒板を表示", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
-                let myBoundSize: CGSize = UIScreen.mainScreen().bounds.size
-                self.aImageView.frame = CGRectMake(0, 0, myBoundSize.width, myBoundSize.height)
-                self.aImageView.image = UIImage(named: "back.png")
+            let button3 = UIAlertAction(title: "黒板を表示", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
+                let myBoundSize: CGSize = UIScreen.main.bounds.size
+                aImageView.frame = CGRect(x:0, y:0, width: myBoundSize.width, height:myBoundSize.height)
+                aImageView.image = UIImage(named: "back.png")
             }
-            let button4 = UIAlertAction(title: "ひまわり", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
-                self.kokubanMode = false
-                self.yukiMode = true
+            let button4 = UIAlertAction(title: "ひまわり", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
+                kokubanMode = false
+                yukiMode = true
             }
-            let button5 = UIAlertAction(title: "チョークを使う", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
-                self.kokubanMode = true
-                self.yukiMode = false
+            let button5 = UIAlertAction(title: "チョークを使う", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
+                kokubanMode = true
+                yukiMode = false
             }
-            let button6 = UIAlertAction(title: "線の太さを変える", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
+            let button6 = UIAlertAction(title: "線の太さを変える", style: UIAlertAction.Style.default) { (okSelected) -> Void in
                 
             }
-            let button7 = UIAlertAction(title: "黒板の有料版を購入", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
+            let button7 = UIAlertAction(title: "黒板の有料版を購入", style: UIAlertAction.Style.default) { (okSelected) -> Void in
                 
             }
     
@@ -161,36 +160,36 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             alert.addAction(button6)
             alert.addAction(button7)
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: nil)
             
             
         }else{
-            let alert = UIAlertController(title: "どうする？？", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-            let button1 = UIAlertAction(title: "写真を選ぶ", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
-                self.selectLibraly()
+            let alert = UIAlertController(title: "どうする？？", message: nil, preferredStyle: UIAlertController.Style.alert)
+            let button1 = UIAlertAction(title: "写真を選ぶ", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
+                selectLibraly()
                 
             }
-            let button2 = UIAlertAction(title: "ライブラリに保存", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-                self.onTouchUpInsideBtnCapture()
+            let button2 = UIAlertAction(title: "ライブラリに保存", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+                onTouchUpInsideBtnCapture()
                 
             }
-            let button3 = UIAlertAction(title: "黒板を表示", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
-                let myBoundSize: CGSize = UIScreen.mainScreen().bounds.size
-                self.aImageView.frame = CGRectMake(0, 0, myBoundSize.width, myBoundSize.height)
-                self.aImageView.image = UIImage(named: "back.png")
+            let button3 = UIAlertAction(title: "黒板を表示", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
+                let myBoundSize: CGSize = UIScreen.main.bounds.size
+                aImageView.frame = CGRect(x:0, y:0, width: myBoundSize.width, height: myBoundSize.height)
+                aImageView.image = UIImage(named: "back.png")
             }
-            let button4 = UIAlertAction(title: "ひまわり", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
-                self.kokubanMode = false
-                self.yukiMode = true
+            let button4 = UIAlertAction(title: "ひまわり", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
+                kokubanMode = false
+                yukiMode = true
                 
             }
-            let button5 = UIAlertAction(title: "チョークを使う", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
-                self.kokubanMode = true
-                self.yukiMode = false
+            let button5 = UIAlertAction(title: "チョークを使う", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
+                kokubanMode = true
+                yukiMode = false
                 
             }
-            let button6 = UIAlertAction(title: "線の太さを変える", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
+            let button6 = UIAlertAction(title: "線の太さを変える", style: UIAlertAction.Style.default) { (okSelected) -> Void in
                 
             }
             
@@ -203,30 +202,30 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             alert.addAction(button6)
             
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: nil)
         }
         
     }
     
     func selectLibraly() {
-        self.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        sourceType = UIImagePickerController.SourceType.photoLibrary
         
-        if !UIImagePickerController.isSourceTypeAvailable(self.sourceType) {
+        if !UIImagePickerController.isSourceTypeAvailable(sourceType) {
             return
         }
         
-        var imagePicker:UIImagePickerController = UIImagePickerController()
+        let imagePicker:UIImagePickerController = UIImagePickerController()
         imagePicker.sourceType = sourceType
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
         
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        present(imagePicker, animated: true, completion: nil)
     }
     
     func takeGrabScreenImage() -> UIImage {
         UIGraphicsBeginImageContext(aImageView.frame.size)
         
-        var image:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        let image:UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
         UIGraphicsEndImageContext()
         return image
     }
@@ -235,22 +234,22 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
         switch select_chook{
             case 1:
-                self.chook1.transform = CGAffineTransformMakeRotation(0)
+                chook1.transform = CGAffineTransform(rotationAngle: 0)
             break
             case 2:
-                self.chook2.transform = CGAffineTransformMakeRotation(0)
+                chook2.transform = CGAffineTransform(rotationAngle: 0)
             break
             case 3:
-                self.chook3.transform = CGAffineTransformMakeRotation(0)
+                chook3.transform = CGAffineTransform(rotationAngle: 0)
             break
             case 4:
-                self.chook4.transform = CGAffineTransformMakeRotation(0)
+                chook4.transform = CGAffineTransform(rotationAngle: 0)
             break
             case 5:
-                self.chook5.transform = CGAffineTransformMakeRotation(0)
+                chook5.transform = CGAffineTransform(rotationAngle: 0)
             break
             case 6:
-                self.tab.enabled		= true
+                tab.isEnabled		= true
             break
             default:
             break;
@@ -258,22 +257,22 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         }
         switch select_chook{
             case 1:
-                self.chook1.transform = CGAffineTransformMakeRotation(10)
+                chook1.transform = CGAffineTransform(rotationAngle: 10)
                 break
             case 2:
-                self.chook2.transform = CGAffineTransformMakeRotation(10)
+                chook2.transform = CGAffineTransform(rotationAngle: 10)
                 break
             case 3:
-                self.chook3.transform = CGAffineTransformMakeRotation(10)
+                chook3.transform = CGAffineTransform(rotationAngle: 10)
                 break
             case 4:
-                self.chook4.transform = CGAffineTransformMakeRotation(10)
+                chook4.transform = CGAffineTransform(rotationAngle: 10)
                 break
             case 5:
-                self.chook5.transform = CGAffineTransformMakeRotation(10)
+                chook5.transform = CGAffineTransform(rotationAngle: 10)
                 break
             case 6:
-                self.tab.enabled		= false
+                tab.isEnabled		= false
                 break
             default:
                 break
@@ -286,59 +285,58 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     
     func onTouchUpInsideBtnCapture(){
-        elaser.hidden=true
-        chook1.hidden=true
-        chook2.hidden=true
-        chook3.hidden=true
-        chook4.hidden=true
-        chook5.hidden=true
-        tab.hidden=true
-        bannerView_.hidden=true
+        elaser.isHidden=true
+        chook1.isHidden=true
+        chook2.isHidden=true
+        chook3.isHidden=true
+        chook4.isHidden=true
+        chook5.isHidden=true
+        tab.isHidden=true
         
-        var img:UIImage = takeGrabScreenImage()
-        UIImageWriteToSavedPhotosAlbum(img, self, "image:didFinishSavingWithError:contextInfo:", nil)
+        let img:UIImage = takeGrabScreenImage()
+        UIImageWriteToSavedPhotosAlbum(img, self, Selector(("image:didFinishSavingWithError:contextInfo:")), nil)
         
     }
     
-    func image(image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutablePointer<Void>) {
+    func image(image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutableRawPointer) {
         
-        elaser.hidden=false
-        chook1.hidden=false
-        chook2.hidden=false
-        chook3.hidden=false
-        chook4.hidden=false
-        chook5.hidden=false
-        tab.hidden=false
-        bannerView_.hidden=false
+        elaser.isHidden=true
+        chook1.isHidden=true
+        chook2.isHidden=true
+        chook3.isHidden=true
+        chook4.isHidden=true
+        chook5.isHidden=true
+        tab.isHidden=true
+
         
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         if error != nil {
             //プライバシー設定不許可など書き込み失敗時は -3310 (ALAssetsLibraryDataUnavailableError)
-            println(error.code)
+            print(error.code)
             
-            let alert = UIAlertController(title: "エラー", message: "保存に失敗しました", preferredStyle: UIAlertControllerStyle.Alert)
-            let button1 = UIAlertAction(title: "閉じる", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
+            let alert = UIAlertController(title: "エラー", message: "保存に失敗しました", preferredStyle: UIAlertController.Style.alert)
+            let button1 = UIAlertAction(title: "閉じる", style: UIAlertAction.Style.default) { (okSelected) -> Void in
                 
             }
             alert.addAction(button1)
-            self.presentViewController(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: nil)
             
         }else{
             
-            let alert = UIAlertController(title: "成功", message: "保存しました", preferredStyle: UIAlertControllerStyle.Alert)
-            let button1 = UIAlertAction(title: "閉じる", style: UIAlertActionStyle.Default) { (okSelected) -> Void in
+            let alert = UIAlertController(title: "成功", message: "保存しました", preferredStyle: UIAlertController.Style.alert)
+            let button1 = UIAlertAction(title: "閉じる", style: UIAlertAction.Style.default) { (okSelected) -> Void in
                 
             }
             alert.addAction(button1)
-            self.presentViewController(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: nil)
         }
     }
     
-    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+    override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         
     }
     
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         
     }
     
@@ -348,38 +346,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         super.viewDidLoad()
         
         //白固定
-        self.setPenColor(index: 0)
+        setPenColor(index: 0)
         
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone || UIDevice.currentDevice().userInterfaceIdiom == .Unspecified {
-            
-            bannerView_ = GADBannerView()
-            
-            bannerView_ = GADBannerView(adSize:kGADAdSizeBanner)
-            
-            bannerView_.frame.origin = CGPointMake(0, 0)
-            bannerView_.frame.size = CGSizeMake(self.view.frame.size.width,50)
-            
-        }else{
-            
-            bannerView_ = GADBannerView()
-            
-            bannerView_ = GADBannerView(adSize:kGADAdSizeBanner)
-            
-            bannerView_.frame.origin = CGPointMake(0, 0)
-            bannerView_.frame.size = CGSizeMake(self.view.frame.size.width,90)
-            
-            
-        }
         
-        bannerView_.adUnitID = "a14ec8b1eda2dca"
-        bannerView_.delegate = self
-        bannerView_.rootViewController = self
-        
-        var request:GADRequest = GADRequest()
-        request.testDevices = [GAD_SIMULATOR_ID]
-        
-        bannerView_.loadRequest(request)
-        self.view.addSubview(bannerView_)
         
         // Do any additional setup after loading the view, typically from a nib.
     }
