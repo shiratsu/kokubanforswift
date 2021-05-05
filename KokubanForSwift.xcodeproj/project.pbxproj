@@ -54,7 +54,7 @@
 		58F9A40D19F6A44700D5929F /* tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F9A3F119F6A44700D5929F /* tab.png */; };
 		58F9A40E19F6A44700D5929F /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F9A3F219F6A44700D5929F /* back.png */; };
 		58F9A40F19F6A44700D5929F /* elaser.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F9A3F319F6A44700D5929F /* elaser.png */; };
-		58F9A41619F953CE00D5929F /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F9A41519F953CE00D5929F /* DrawingView.m */; };
+		A9AD224626422837007D32FC /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9AD224526422837007D32FC /* DrawingView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,9 +122,9 @@
 		58F9A3F219F6A44700D5929F /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		58F9A3F319F6A44700D5929F /* elaser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = elaser.png; sourceTree = "<group>"; };
 		58F9A41319F953CD00D5929F /* KokubanForSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KokubanForSwift-Bridging-Header.h"; sourceTree = "<group>"; };
-		58F9A41419F953CE00D5929F /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingView.h; sourceTree = "<group>"; };
-		58F9A41519F953CE00D5929F /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingView.m; sourceTree = "<group>"; };
 		7187D534E4BF446DB1434416 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		A9AD224426422837007D32FC /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingView.h; sourceTree = "<group>"; };
+		A9AD224526422837007D32FC /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingView.m; sourceTree = "<group>"; };
 		D7DC891635E2443695729A3F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -277,10 +277,10 @@
 		58F9A41219F9533200D5929F /* uiview */ = {
 			isa = PBXGroup;
 			children = (
+				A9AD224426422837007D32FC /* DrawingView.h */,
+				A9AD224526422837007D32FC /* DrawingView.m */,
 				58198DD71A63701D0050F69A /* Common.h */,
 				58198DD81A63701D0050F69A /* Common.m */,
-				58F9A41419F953CE00D5929F /* DrawingView.h */,
-				58F9A41519F953CE00D5929F /* DrawingView.m */,
 				58F9A41319F953CD00D5929F /* KokubanForSwift-Bridging-Header.h */,
 			);
 			name = uiview;
@@ -426,8 +426,8 @@
 				58198DD91A63701D0050F69A /* Common.m in Sources */,
 				58F9A3BA19F6967300D5929F /* ViewController.swift in Sources */,
 				58F9A3B819F6967300D5929F /* AppDelegate.swift in Sources */,
-				58F9A41619F953CE00D5929F /* DrawingView.m in Sources */,
 				58E8B57F1A95F296006EF840 /* Line.swift in Sources */,
+				A9AD224626422837007D32FC /* DrawingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

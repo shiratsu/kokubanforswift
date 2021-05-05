@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,GADBannerViewDelegate {
+class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     @IBOutlet weak var chook1: UIButton!
     @IBOutlet weak var elaser: UIButton!
@@ -20,28 +20,26 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBOutlet weak var aImageView: UIImageView!
     @IBOutlet var pastDrawingView: DrawingView!
     @IBOutlet var curDrawingView: DrawingView!
-    var penWhite:CGFloat
-    var penRed:CGFloat
-    var penYellow:CGFloat
-    var penBlue:CGFloat
-    var penBlack:CGFloat
-    var penGreen:CGFloat
-    var penAlpha:CGFloat
-    var select_chook:Int
-    var kokubanMode:Bool
-    var billingMode:Bool
-    var yukiMode:Bool
-    var aryStroke:NSMutableArray
-    var sourceType:UIImagePickerController.SourceType
-    
+    var penWhite:CGFloat = 0
+    var penRed:CGFloat = 0
+    var penYellow:CGFloat = 0
+    var penBlue:CGFloat = 0
+    var penBlack:CGFloat = 0
+    var penGreen:CGFloat = 0
+    var penAlpha:CGFloat = 0
+    var select_chook:Int = 0
+    var lineDepth: Int = 1
+    var kokubanMode:Bool = true
+    var billingMode:Bool = true
+    var yukiMode:Bool = true
+    var aryPastStroke:NSMutableArray = NSMutableArray(array: [])
+    var aryStroke:NSMutableArray = NSMutableArray(array: [])
+    var sourceType:UIImagePickerController.SourceType = UIImagePickerController.SourceType.photoLibrary
     
 
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     func setPenColor(index idx:NSInteger){
-        var components:[CGFloat] = [
+        let components:[CGFloat] = [
             1.0, 1.0, 1.0, 1.0,
             246 / 255.0, 171 / 255.0, 171 / 255.0,  1.0,	// 0:ピンク
             171 / 255.0, 177 / 255.0, 244 / 255.0, 1.0,	// 1:青
@@ -255,7 +253,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             break;
             
         }
-        switch select_chook{
+        switch stand{
             case 1:
                 chook1.transform = CGAffineTransform(rotationAngle: 10)
                 break
@@ -348,7 +346,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         //白固定
         setPenColor(index: 0)
         
-        
+        kokubanMode = true
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -362,6 +360,97 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         // Dispose of any resources that can be recreated.
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if kokubanMode{
+            stockStroke(touches)
+        }else{
+            
+        }
+    }
+    
+    func stockStroke(_ touches: Set<UITouch>){
+        
+        let touch: UITouch? = touches.first
+        let point = touch?.location(in: curDrawingView)
+        
+        if touch?.view != curDrawingView{
+            return
+            
+        }
+        
+        switch touch?.phase {
+        case .began:
+            aryStroke = NSMutableArray(array: [])
+            aryStroke.add(NSNumber(value: Float(penRed)))
+            aryStroke.add(NSNumber(value: Float(penGreen)))
+            aryStroke.add(NSNumber(value: Float(penBlue)))
+            aryStroke.add(NSNumber(value: Float(penAlpha)))
+            aryStroke.add(NSNumber(value: lineDepth))
+            aryStroke.add(NSNumber(value: Float(point?.x ?? 0)))
+            aryStroke.add(NSNumber(value: Float(point?.y ?? 0)))
+            break
+        case .moved:
+            if aryStroke.count > 0 {
+                // 移動先の点を置く
+                aryStroke.add(NSNumber(value: Float(point?.x ?? 0)))
+                aryStroke.add(NSNumber(value: Float(point?.y ?? 0)))
+            }
+        case .stationary:
+            break
+        case .ended:
+            drawActionEnded(point: point)
+            break
+        case .cancelled:
+            drawActionEnded(point: point)
+            break
+        default:
+            drawActionEnded(point: point)
+            break
+        }
+        curDrawingView.aryData = aryStroke
+        curDrawingView.setNeedsDisplay()
+    }
+    
+    
+    /// 描画アクションを終わらせる
+    func drawActionEnded(point: CGPoint?){
+        if aryStroke.count > 0 {
+            aryStroke.add(NSNumber(value: Float(point?.x ?? 0)))
+            aryStroke.add(NSNumber(value: Float(point?.y ?? 0)))
+            
+            // 過去分を蓄積
+            aryPastStroke.add(aryStroke)
+            
+            aryStroke = NSMutableArray(array: [])
+            pastDrawingView.aryData = aryPastStroke
+            pastDrawingView.setNeedsDisplay()
+        }
+        
+        
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if kokubanMode{
+            stockStroke(touches)
+        }
+        
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if kokubanMode{
+            stockStroke(touches)
+        }
+        
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if kokubanMode{
+            stockStroke(touches)
+        }
+        
+    }
 
 }
 
