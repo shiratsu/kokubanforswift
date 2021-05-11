@@ -32,6 +32,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     var kokubanMode:Bool = true
     var billingMode:Bool = true
     var yukiMode:Bool = true
+    var textMode:Bool = true
     var aryPastStroke:NSMutableArray = NSMutableArray(array: [])
     var aryStroke:NSMutableArray = NSMutableArray(array: [])
     var sourceType:UIImagePickerController.SourceType = UIImagePickerController.SourceType.photoLibrary
@@ -95,9 +96,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         let okButton = UIAlertAction(title: "一つ前に戻る", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
             print("Ok Selected")
             kokubanMode = true
-            if self.aryStroke.count > 0 {
-                aryStroke.removeLastObject()
-                pastDrawingView.aryData = aryStroke
+            if self.aryPastStroke.count > 0 {
+                aryPastStroke.removeLastObject()
+                pastDrawingView.aryData = aryPastStroke
                 pastDrawingView.setNeedsDisplay()
             }
             
@@ -106,9 +107,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             print("Cancel Selected")
             
             kokubanMode = true
-            if aryStroke.count > 0 {
-                aryStroke.removeAllObjects()
-                pastDrawingView.aryData = aryStroke
+            if aryPastStroke.count > 0 {
+                aryPastStroke.removeAllObjects()
+                pastDrawingView.aryData = aryPastStroke
                 pastDrawingView.setNeedsDisplay()
             }
         }
@@ -138,16 +139,20 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             let button4 = UIAlertAction(title: "ひまわり", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
                 kokubanMode = false
                 yukiMode = true
+                textMode = false
             }
             let button5 = UIAlertAction(title: "チョークを使う", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
                 kokubanMode = true
                 yukiMode = false
+                textMode = false
             }
             let button6 = UIAlertAction(title: "線の太さを変える", style: UIAlertAction.Style.default) { (okSelected) -> Void in
                 
             }
             let button7 = UIAlertAction(title: "黒板の有料版を購入", style: UIAlertAction.Style.default) { (okSelected) -> Void in
-                
+                kokubanMode = false
+                yukiMode = false
+                textMode = true
             }
     
             alert.addAction(button1)
@@ -185,10 +190,17 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             let button5 = UIAlertAction(title: "チョークを使う", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
                 kokubanMode = true
                 yukiMode = false
+                textMode = false
                 
             }
             let button6 = UIAlertAction(title: "線の太さを変える", style: UIAlertAction.Style.default) { (okSelected) -> Void in
                 
+            }
+            
+            let button7 = UIAlertAction(title: "textfield", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
+                kokubanMode = false
+                yukiMode = false
+                textMode = true
             }
             
             
@@ -198,7 +210,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             alert.addAction(button4)
             alert.addAction(button5)
             alert.addAction(button6)
-            
+            alert.addAction(button7)
             
             present(alert, animated: true, completion: nil)
         }
@@ -363,8 +375,23 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if kokubanMode{
             stockStroke(touches)
+        
+        // ひまわり
+        }else if yukiMode == true{
+            var image: UIImage? = nil
+            if yukiMode == true{
+                image = UIImage(named: "himawari")
+                let iv: UIImageView = UIImageView(image: image!)
+                
+                let touch: UITouch = touches.first ?? UITouch()
+                let point = touch.location(in: view)
+                iv.frame.origin.x = point.x-10
+                iv.frame.origin.y = point.y-10
+                pastDrawingView.addSubview(iv)
+            }
+        
+        // textfield
         }else{
-            
         }
     }
     

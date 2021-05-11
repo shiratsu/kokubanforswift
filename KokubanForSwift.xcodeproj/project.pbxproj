@@ -55,6 +55,10 @@
 		58F9A40E19F6A44700D5929F /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F9A3F219F6A44700D5929F /* back.png */; };
 		58F9A40F19F6A44700D5929F /* elaser.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F9A3F319F6A44700D5929F /* elaser.png */; };
 		A9AD224626422837007D32FC /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9AD224526422837007D32FC /* DrawingView.m */; };
+		F311F9872645F8EC00507C53 /* ManageDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311F9862645F8EC00507C53 /* ManageDrawingView.swift */; };
+		F311F9A9264AD8F000507C53 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311F9A8264AD8EF00507C53 /* CustomTextField.swift */; };
+		F311F9AD264AD99100507C53 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311F9AC264AD99100507C53 /* CustomImageView.swift */; };
+		F311F9B1264AD9FC00507C53 /* CustomViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311F9B0264AD9FC00507C53 /* CustomViewProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +130,10 @@
 		A9AD224426422837007D32FC /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingView.h; sourceTree = "<group>"; };
 		A9AD224526422837007D32FC /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingView.m; sourceTree = "<group>"; };
 		D7DC891635E2443695729A3F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F311F9862645F8EC00507C53 /* ManageDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDrawingView.swift; sourceTree = "<group>"; };
+		F311F9A8264AD8EF00507C53 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		F311F9AC264AD99100507C53 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		F311F9B0264AD9FC00507C53 /* CustomViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +290,10 @@
 				58198DD71A63701D0050F69A /* Common.h */,
 				58198DD81A63701D0050F69A /* Common.m */,
 				58F9A41319F953CD00D5929F /* KokubanForSwift-Bridging-Header.h */,
+				F311F9862645F8EC00507C53 /* ManageDrawingView.swift */,
+				F311F9A8264AD8EF00507C53 /* CustomTextField.swift */,
+				F311F9AC264AD99100507C53 /* CustomImageView.swift */,
+				F311F9B0264AD9FC00507C53 /* CustomViewProtocol.swift */,
 			);
 			name = uiview;
 			sourceTree = "<group>";
@@ -423,10 +435,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F311F9A9264AD8F000507C53 /* CustomTextField.swift in Sources */,
+				F311F9AD264AD99100507C53 /* CustomImageView.swift in Sources */,
 				58198DD91A63701D0050F69A /* Common.m in Sources */,
 				58F9A3BA19F6967300D5929F /* ViewController.swift in Sources */,
+				F311F9B1264AD9FC00507C53 /* CustomViewProtocol.swift in Sources */,
 				58F9A3B819F6967300D5929F /* AppDelegate.swift in Sources */,
 				58E8B57F1A95F296006EF840 /* Line.swift in Sources */,
+				F311F9872645F8EC00507C53 /* ManageDrawingView.swift in Sources */,
 				A9AD224626422837007D32FC /* DrawingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
