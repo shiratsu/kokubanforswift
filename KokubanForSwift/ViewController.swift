@@ -190,7 +190,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
 //                view.isUserInteractionEnabled = false
                 curDrawingView.isUserInteractionEnabled = true
                 
-                let iv = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                let iv = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
 //                iv.isUserInteractionEnabled = true
                 iv.backgroundColor = .white
                 
