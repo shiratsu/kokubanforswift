@@ -59,6 +59,7 @@
 		F311F9A9264AD8F000507C53 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311F9A8264AD8EF00507C53 /* CustomTextField.swift */; };
 		F311F9AD264AD99100507C53 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311F9AC264AD99100507C53 /* CustomImageView.swift */; };
 		F311F9B1264AD9FC00507C53 /* CustomViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311F9B0264AD9FC00507C53 /* CustomViewProtocol.swift */; };
+		F345AEE5264C289F00969588 /* DragableDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F345AEE4264C289F00969588 /* DragableDrawingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,7 @@
 		F311F9A8264AD8EF00507C53 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		F311F9AC264AD99100507C53 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		F311F9B0264AD9FC00507C53 /* CustomViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewProtocol.swift; sourceTree = "<group>"; };
+		F345AEE4264C289F00969588 /* DragableDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragableDrawingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +296,7 @@
 				F311F9A8264AD8EF00507C53 /* CustomTextField.swift */,
 				F311F9AC264AD99100507C53 /* CustomImageView.swift */,
 				F311F9B0264AD9FC00507C53 /* CustomViewProtocol.swift */,
+				F345AEE4264C289F00969588 /* DragableDrawingView.swift */,
 			);
 			name = uiview;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				F311F9A9264AD8F000507C53 /* CustomTextField.swift in Sources */,
 				F311F9AD264AD99100507C53 /* CustomImageView.swift in Sources */,
 				58198DD91A63701D0050F69A /* Common.m in Sources */,
+				F345AEE5264C289F00969588 /* DragableDrawingView.swift in Sources */,
 				58F9A3BA19F6967300D5929F /* ViewController.swift in Sources */,
 				F311F9B1264AD9FC00507C53 /* CustomViewProtocol.swift in Sources */,
 				58F9A3B819F6967300D5929F /* AppDelegate.swift in Sources */,

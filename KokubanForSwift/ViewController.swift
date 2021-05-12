@@ -18,8 +18,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBOutlet weak var chook5: UIButton!
     @IBOutlet weak var tab: UIButton!
     @IBOutlet weak var aImageView: UIImageView!
-    @IBOutlet var pastDrawingView: DrawingView!
-    @IBOutlet var curDrawingView: DrawingView!
+    @IBOutlet var pastDrawingView: DragableDrawingView!
+    @IBOutlet var curDrawingView: DragableDrawingView!
     var penWhite:CGFloat = 0
     var penRed:CGFloat = 0
     var penYellow:CGFloat = 0
@@ -149,7 +149,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             let button6 = UIAlertAction(title: "線の太さを変える", style: UIAlertAction.Style.default) { (okSelected) -> Void in
                 
             }
-            let button7 = UIAlertAction(title: "黒板の有料版を購入", style: UIAlertAction.Style.default) { (okSelected) -> Void in
+            let button7 = UIAlertAction(title: "黒板の有料版を購入", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
                 kokubanMode = false
                 yukiMode = false
                 textMode = true
@@ -185,6 +185,16 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             let button4 = UIAlertAction(title: "ひまわり", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
                 kokubanMode = false
                 yukiMode = true
+                
+                
+//                view.isUserInteractionEnabled = false
+                curDrawingView.isUserInteractionEnabled = true
+                
+                let iv = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+//                iv.isUserInteractionEnabled = true
+                iv.backgroundColor = .white
+                
+                curDrawingView.addSubview(iv)
                 
             }
             let button5 = UIAlertAction(title: "チョークを使う", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
@@ -381,17 +391,19 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             var image: UIImage? = nil
             if yukiMode == true{
                 image = UIImage(named: "himawari")
-                let iv: UIImageView = UIImageView(image: image!)
                 
-                let touch: UITouch = touches.first ?? UITouch()
-                let point = touch.location(in: view)
-                iv.frame.origin.x = point.x-10
-                iv.frame.origin.y = point.y-10
-                pastDrawingView.addSubview(iv)
             }
         
         // textfield
         }else{
+            let ctf: UITextField = UITextField()
+            
+            let touch: UITouch = touches.first ?? UITouch()
+            let point = touch.location(in: view)
+            ctf.frame.origin.x = point.x-10
+            ctf.frame.origin.y = point.y-10
+//            ctf.isUserInteractionEnabled = true
+            curDrawingView.addSubview(ctf)
         }
     }
     

@@ -1,22 +1,16 @@
 //
-//  CustomTextField.swift
+//  DragableDrawingView.swift
 //  KokubanForSwift
 //
-//  Created by 平塚俊輔 on 2021/05/12.
+//  Created by 平塚俊輔 on 2021/05/13.
 //  Copyright © 2021 HIRATSUKA SHUNSUKE. All rights reserved.
 //
 
 import UIKit
 
-class CustomTextField: UITextField {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+class DragableDrawingView: DrawingView{
+    
+    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
             // [1]
         dragMoved(touches, with: event)

@@ -18,6 +18,11 @@ class CustomImageView: UIImageView {
     }
     */
     
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+            // [1]
+        dragMoved(touches, with: event)
+    }
+    
     open override func addSubview(_ view: UIView){
         super.addSubview(view)
         view.center = center
