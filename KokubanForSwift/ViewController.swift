@@ -183,18 +183,12 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
                 aImageView.image = UIImage(named: "back.png")
             }
             let button4 = UIAlertAction(title: "ひまわり", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
-                kokubanMode = false
-                yukiMode = true
+//                kokubanMode = false
+//                yukiMode = true
                 
                 
-//                view.isUserInteractionEnabled = false
-                curDrawingView.isUserInteractionEnabled = true
+                addViewObject()
                 
-                let iv = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-//                iv.isUserInteractionEnabled = true
-                iv.backgroundColor = .white
-                
-                curDrawingView.addSubview(iv)
                 
             }
             let button5 = UIAlertAction(title: "チョークを使う", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
@@ -208,9 +202,10 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             }
             
             let button7 = UIAlertAction(title: "textfield", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
-                kokubanMode = false
-                yukiMode = false
-                textMode = true
+//                kokubanMode = false
+//                yukiMode = false
+//                textMode = true
+                addTextField()
             }
             
             
@@ -225,6 +220,31 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             present(alert, animated: true, completion: nil)
         }
         
+    }
+    
+    
+    /// UIViewを追加
+    func addViewObject(){
+        curDrawingView.isUserInteractionEnabled = true
+        
+        // 適当な物体を追加
+        let iv = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+
+        iv.backgroundColor = .white
+        
+        curDrawingView.addSubview(iv)
+    }
+    
+    func addTextField(){
+        curDrawingView.isUserInteractionEnabled = true
+        
+        // 適当な物体を追加
+        let iv = CustomTextField(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
+
+        iv.backgroundColor = .white
+        iv.delegate = self
+        
+        curDrawingView.addSubview(iv)
     }
     
     func selectLibraly() {
@@ -396,14 +416,14 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
         // textfield
         }else{
-            let ctf: UITextField = UITextField()
-            
-            let touch: UITouch = touches.first ?? UITouch()
-            let point = touch.location(in: view)
-            ctf.frame.origin.x = point.x-10
-            ctf.frame.origin.y = point.y-10
-//            ctf.isUserInteractionEnabled = true
-            curDrawingView.addSubview(ctf)
+//            let ctf: UITextField = UITextField()
+//
+//            let touch: UITouch = touches.first ?? UITouch()
+//            let point = touch.location(in: view)
+//            ctf.frame.origin.x = point.x-10
+//            ctf.frame.origin.y = point.y-10
+////            ctf.isUserInteractionEnabled = true
+//            curDrawingView.addSubview(ctf)
         }
     }
     
@@ -493,3 +513,34 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
 
 }
 
+
+extension ViewController: UITextFieldDelegate{
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField.text != nil {
+            let text = textField.text! as NSString
+            let finalString = text.replacingCharacters(in: range, with: string)
+            textField.frame.size.width = getWidth(text: finalString)
+        }
+        
+//        print("aaaaavvvv")
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+     
+//        label.text = textField.text
+ 
+        // キーボードを閉じる
+        textField.resignFirstResponder()
+ 
+        return true
+    }
+    
+    func getWidth(text: String) -> CGFloat {
+        let txtField = UITextField(frame: .zero)
+        txtField.text = text
+        txtField.sizeToFit()
+        return txtField.frame.size.width
+    }
+}
