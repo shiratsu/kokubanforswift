@@ -18,7 +18,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBOutlet weak var chook5: UIButton!
     @IBOutlet weak var tab: UIButton!
     @IBOutlet weak var aImageView: UIImageView!
-    @IBOutlet var pastDrawingView: DragableDrawingView!
+    @IBOutlet var pastDrawingView: DrawingView!
     @IBOutlet var curDrawingView: DragableDrawingView!
     var penWhite:CGFloat = 0
     var penRed:CGFloat = 0
@@ -225,6 +225,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     /// UIViewを追加
     func addViewObject(){
+        curDrawingView.isDraw = false
         curDrawingView.isUserInteractionEnabled = true
         
         // 適当な物体を追加
@@ -236,6 +237,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     
     func addTextField(){
+        
+        curDrawingView.isDraw = true
         curDrawingView.isUserInteractionEnabled = true
         
         // 適当な物体を追加
@@ -389,6 +392,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         setPenColor(index: 0)
         
         kokubanMode = true
+        if #available(iOS 13.0, *) {
+            curDrawingView.accessibilityRespondsToUserInteraction = true
+        } else {
+            // Fallback on earlier versions
+        }
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -402,73 +410,73 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         // Dispose of any resources that can be recreated.
     }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if kokubanMode{
-            stockStroke(touches)
-        
-        // ひまわり
-        }else if yukiMode == true{
-            var image: UIImage? = nil
-            if yukiMode == true{
-                image = UIImage(named: "himawari")
-                
-            }
-        
-        // textfield
-        }else{
-//            let ctf: UITextField = UITextField()
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if kokubanMode{
+//            stockStroke(touches)
 //
-//            let touch: UITouch = touches.first ?? UITouch()
-//            let point = touch.location(in: view)
-//            ctf.frame.origin.x = point.x-10
-//            ctf.frame.origin.y = point.y-10
-////            ctf.isUserInteractionEnabled = true
-//            curDrawingView.addSubview(ctf)
-        }
-    }
+//        // ひまわり
+//        }else if yukiMode == true{
+//            var image: UIImage? = nil
+//            if yukiMode == true{
+//                image = UIImage(named: "himawari")
+//
+//            }
+//
+//        // textfield
+//        }else{
+////            let ctf: UITextField = UITextField()
+////
+////            let touch: UITouch = touches.first ?? UITouch()
+////            let point = touch.location(in: view)
+////            ctf.frame.origin.x = point.x-10
+////            ctf.frame.origin.y = point.y-10
+//////            ctf.isUserInteractionEnabled = true
+////            curDrawingView.addSubview(ctf)
+//        }
+//    }
     
-    func stockStroke(_ touches: Set<UITouch>){
-        
-        let touch: UITouch? = touches.first
-        let point = touch?.location(in: curDrawingView)
-        
-        if touch?.view != curDrawingView{
-            return
-            
-        }
-        
-        switch touch?.phase {
-        case .began:
-            aryStroke = NSMutableArray(array: [])
-            aryStroke.add(NSNumber(value: Float(penRed)))
-            aryStroke.add(NSNumber(value: Float(penGreen)))
-            aryStroke.add(NSNumber(value: Float(penBlue)))
-            aryStroke.add(NSNumber(value: Float(penAlpha)))
-            aryStroke.add(NSNumber(value: lineDepth))
-            aryStroke.add(NSNumber(value: Float(point?.x ?? 0)))
-            aryStroke.add(NSNumber(value: Float(point?.y ?? 0)))
-            break
-        case .moved:
-            if aryStroke.count > 0 {
-                // 移動先の点を置く
-                aryStroke.add(NSNumber(value: Float(point?.x ?? 0)))
-                aryStroke.add(NSNumber(value: Float(point?.y ?? 0)))
-            }
-        case .stationary:
-            break
-        case .ended:
-            drawActionEnded(point: point)
-            break
-        case .cancelled:
-            drawActionEnded(point: point)
-            break
-        default:
-            drawActionEnded(point: point)
-            break
-        }
-        curDrawingView.aryData = aryStroke
-        curDrawingView.setNeedsDisplay()
-    }
+//    func stockStroke(_ touches: Set<UITouch>){
+//        
+//        let touch: UITouch? = touches.first
+//        let point = touch?.location(in: curDrawingView)
+//        
+//        if touch?.view != curDrawingView{
+//            return
+//            
+//        }
+//        
+//        switch touch?.phase {
+//        case .began:
+//            aryStroke = NSMutableArray(array: [])
+//            aryStroke.add(NSNumber(value: Float(penRed)))
+//            aryStroke.add(NSNumber(value: Float(penGreen)))
+//            aryStroke.add(NSNumber(value: Float(penBlue)))
+//            aryStroke.add(NSNumber(value: Float(penAlpha)))
+//            aryStroke.add(NSNumber(value: lineDepth))
+//            aryStroke.add(NSNumber(value: Float(point?.x ?? 0)))
+//            aryStroke.add(NSNumber(value: Float(point?.y ?? 0)))
+//            break
+//        case .moved:
+//            if aryStroke.count > 0 {
+//                // 移動先の点を置く
+//                aryStroke.add(NSNumber(value: Float(point?.x ?? 0)))
+//                aryStroke.add(NSNumber(value: Float(point?.y ?? 0)))
+//            }
+//        case .stationary:
+//            break
+//        case .ended:
+//            drawActionEnded(point: point)
+//            break
+//        case .cancelled:
+//            drawActionEnded(point: point)
+//            break
+//        default:
+//            drawActionEnded(point: point)
+//            break
+//        }
+//        curDrawingView.aryData = aryStroke
+//        curDrawingView.setNeedsDisplay()
+//    }
     
     
     /// 描画アクションを終わらせる
@@ -488,28 +496,28 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if kokubanMode{
-            stockStroke(touches)
-        }
-        
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        if kokubanMode{
-            stockStroke(touches)
-        }
-        
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        if kokubanMode{
-            stockStroke(touches)
-        }
-        
-    }
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if kokubanMode{
+//            stockStroke(touches)
+//        }
+//
+//    }
+//
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//
+//        if kokubanMode{
+//            stockStroke(touches)
+//        }
+//
+//    }
+//
+//    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+//
+//        if kokubanMode{
+//            stockStroke(touches)
+//        }
+//
+//    }
 
 }
 
