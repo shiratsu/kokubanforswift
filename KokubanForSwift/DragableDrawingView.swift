@@ -29,7 +29,11 @@ class DragableDrawingView: UIView{
     
     private var lastDrawImage: UIImage?
     
-    
+    override func draw(_ rect: CGRect) {
+        lastDrawImage?.draw(at: CGPoint.zero)
+        penColor.setStroke()
+        path?.stroke()
+    }
     
     open override func addSubview(_ view: UIView){
         super.addSubview(view)
@@ -79,6 +83,7 @@ class DragableDrawingView: UIView{
             temporaryPath = nil
             snapshotImage = nil
             isCallTouchMoved = false
+            setNeedsDisplay()
         }else{
             dragMoved(touches, with: event)
         }
