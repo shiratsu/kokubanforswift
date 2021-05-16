@@ -208,6 +208,13 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
                 addTextField()
             }
             
+            let button8 = UIAlertAction(title: "線を追加", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
+//                kokubanMode = false
+//                yukiMode = false
+//                textMode = true
+                addLine()
+            }
+            
             
             alert.addAction(button1)
             alert.addAction(button2)
@@ -240,6 +247,18 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
         // 適当な物体を追加
         let iv = CustomTextField(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
+
+        iv.backgroundColor = .white
+        iv.delegate = self
+        
+        curDrawingView.addSubview(iv)
+    }
+    
+    func addLine(){
+        curDrawingView.isUserInteractionEnabled = true
+        
+        // 適当な物体を追加
+        let iv = CustomTextField(frame: CGRect(x: 0, y: 0, width: 50, height: 2))
 
         iv.backgroundColor = .white
         iv.delegate = self
@@ -481,8 +500,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             aryPastStroke.add(aryStroke)
             
             aryStroke = NSMutableArray(array: [])
-            pastDrawingView.aryData = aryPastStroke
-            pastDrawingView.setNeedsDisplay()
+            curDrawingView.aryData = aryPastStroke
+            curDrawingView.setNeedsDisplay()
         }
         
         
