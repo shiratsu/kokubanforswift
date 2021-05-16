@@ -18,7 +18,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBOutlet weak var chook5: UIButton!
     @IBOutlet weak var tab: UIButton!
     @IBOutlet weak var aImageView: UIImageView!
-    @IBOutlet var pastDrawingView: DrawingView!
+    
     @IBOutlet var curDrawingView: DragableDrawingView!
     var penWhite:CGFloat = 0
     var penRed:CGFloat = 0
@@ -60,6 +60,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBAction func chook1(sender: AnyObject) {
         Allstand(stand: 1)
         setPenColor(index: 0)
+        curDrawingView.penColor = UIColor.white
         kokubanMode = true
     }
     @IBAction func chook2(sender: AnyObject) {
@@ -98,8 +99,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             kokubanMode = true
             if self.aryPastStroke.count > 0 {
                 aryPastStroke.removeLastObject()
-                pastDrawingView.aryData = aryPastStroke
-                pastDrawingView.setNeedsDisplay()
+//                pastDrawingView.aryData = aryPastStroke
+//                pastDrawingView.setNeedsDisplay()
             }
             
         }
@@ -109,8 +110,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             kokubanMode = true
             if aryPastStroke.count > 0 {
                 aryPastStroke.removeAllObjects()
-                pastDrawingView.aryData = aryPastStroke
-                pastDrawingView.setNeedsDisplay()
+//                pastDrawingView.aryData = aryPastStroke
+//                pastDrawingView.setNeedsDisplay()
             }
         }
         alert.addAction(okButton)
@@ -489,8 +490,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             aryPastStroke.add(aryStroke)
             
             aryStroke = NSMutableArray(array: [])
-            pastDrawingView.aryData = aryPastStroke
-            pastDrawingView.setNeedsDisplay()
+//            pastDrawingView.aryData = aryPastStroke
+//            pastDrawingView.setNeedsDisplay()
         }
         
         

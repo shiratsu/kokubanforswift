@@ -22,10 +22,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="L78-32-w7R">
                                 <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FeF-kj-4yz" customClass="DrawingView">
-                                <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwq-z3-u99" customClass="DragableDrawingView" customModule="KokubanForSwift" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                                 <subviews>
@@ -142,16 +138,12 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="FeF-kj-4yz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="4xL-Pq-fAp"/>
-                            <constraint firstItem="FeF-kj-4yz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6tl-1z-b50"/>
                             <constraint firstAttribute="bottom" secondItem="L78-32-w7R" secondAttribute="bottom" id="9Gh-cX-TpX"/>
-                            <constraint firstAttribute="bottom" secondItem="FeF-kj-4yz" secondAttribute="bottom" id="RLu-sD-Ds1"/>
+                            <constraint firstItem="xwq-z3-u99" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CD5-wd-bY3"/>
+                            <constraint firstItem="xwq-z3-u99" firstAttribute="trailing" secondItem="L78-32-w7R" secondAttribute="trailing" id="IGr-wl-VSn"/>
                             <constraint firstItem="xwq-z3-u99" firstAttribute="bottom" secondItem="L78-32-w7R" secondAttribute="bottom" id="SPH-Fd-I46"/>
                             <constraint firstItem="xwq-z3-u99" firstAttribute="top" secondItem="L78-32-w7R" secondAttribute="top" id="UfZ-wS-l33"/>
                             <constraint firstItem="L78-32-w7R" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZrD-HI-XsF"/>
-                            <constraint firstItem="xwq-z3-u99" firstAttribute="trailing" secondItem="FeF-kj-4yz" secondAttribute="trailing" id="jDh-FG-FXb"/>
-                            <constraint firstAttribute="trailing" secondItem="FeF-kj-4yz" secondAttribute="trailing" id="sy5-pv-Thx"/>
-                            <constraint firstItem="xwq-z3-u99" firstAttribute="leading" secondItem="FeF-kj-4yz" secondAttribute="leading" id="wmI-4t-U80"/>
                             <constraint firstItem="L78-32-w7R" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ylh-A8-2oa"/>
                             <constraint firstAttribute="trailing" secondItem="L78-32-w7R" secondAttribute="trailing" id="z31-Gi-XLb"/>
                         </constraints>
@@ -164,7 +156,6 @@
                         <outlet property="chook4" destination="pFy-0u-COy" id="EN0-wU-Rda"/>
                         <outlet property="curDrawingView" destination="xwq-z3-u99" id="1F0-kN-aZv"/>
                         <outlet property="elaser" destination="Qlb-L2-D15" id="Wm1-md-5Nb"/>
-                        <outlet property="pastDrawingView" destination="FeF-kj-4yz" id="B1n-TP-OxV"/>
                         <outlet property="tab" destination="pVj-lV-B7q" id="Phb-xT-tAy"/>
                     </connections>
                 </viewController>
