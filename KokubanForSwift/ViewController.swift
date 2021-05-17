@@ -60,7 +60,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBAction func chook1(sender: AnyObject) {
         Allstand(stand: 1)
         setPenColor(index: 0)
-        curDrawingView.penColor = UIColor.white
+        curDrawingView.currentColor = UIColor.white
         kokubanMode = true
     }
     @IBAction func chook2(sender: AnyObject) {
