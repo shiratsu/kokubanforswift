@@ -15,7 +15,6 @@
 		58198DC91A636AA50050F69A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58198DC81A636AA50050F69A /* CFNetwork.framework */; };
 		58198DCB1A636AAF0050F69A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58198DCA1A636AAF0050F69A /* CoreGraphics.framework */; };
 		58198DCD1A636ABC0050F69A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58198DCC1A636ABC0050F69A /* Foundation.framework */; };
-		58198DCF1A636ACB0050F69A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58198DCE1A636ACB0050F69A /* StoreKit.framework */; };
 		58198DD11A636ADA0050F69A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58198DD01A636ADA0050F69A /* MobileCoreServices.framework */; };
 		58198DD31A636AF90050F69A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58198DD21A636AF90050F69A /* QuartzCore.framework */; };
 		58198DD91A63701D0050F69A /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 58198DD81A63701D0050F69A /* Common.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -83,7 +82,6 @@
 		58198DC81A636AA50050F69A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		58198DCA1A636AAF0050F69A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		58198DCC1A636ABC0050F69A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		58198DCE1A636ACB0050F69A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		58198DD01A636ADA0050F69A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		58198DD21A636AF90050F69A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		58198DD71A63701D0050F69A /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 		58F9A3F219F6A44700D5929F /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		58F9A3F319F6A44700D5929F /* elaser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = elaser.png; sourceTree = "<group>"; };
 		58F9A41319F953CD00D5929F /* KokubanForSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KokubanForSwift-Bridging-Header.h"; sourceTree = "<group>"; };
-		7187D534E4BF446DB1434416 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		A9AD224426422837007D32FC /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingView.h; sourceTree = "<group>"; };
 		A9AD224526422837007D32FC /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingView.m; sourceTree = "<group>"; };
 		D7DC891635E2443695729A3F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,7 +144,6 @@
 			files = (
 				58198DD31A636AF90050F69A /* QuartzCore.framework in Frameworks */,
 				58198DD11A636ADA0050F69A /* MobileCoreServices.framework in Frameworks */,
-				58198DCF1A636ACB0050F69A /* StoreKit.framework in Frameworks */,
 				58198DCD1A636ABC0050F69A /* Foundation.framework in Frameworks */,
 				58198DCB1A636AAF0050F69A /* CoreGraphics.framework in Frameworks */,
 				58198DC91A636AA50050F69A /* CFNetwork.framework in Frameworks */,
@@ -174,7 +170,6 @@
 			children = (
 				58198DD21A636AF90050F69A /* QuartzCore.framework */,
 				58198DD01A636ADA0050F69A /* MobileCoreServices.framework */,
-				58198DCE1A636ACB0050F69A /* StoreKit.framework */,
 				58198DCC1A636ABC0050F69A /* Foundation.framework */,
 				58198DCA1A636AAF0050F69A /* CoreGraphics.framework */,
 				58198DC81A636AA50050F69A /* CFNetwork.framework */,
@@ -195,7 +190,6 @@
 				58F9A3B419F6967300D5929F /* KokubanForSwift */,
 				58F9A3CA19F6967400D5929F /* KokubanForSwiftTests */,
 				58F9A3B319F6967300D5929F /* Products */,
-				7187D534E4BF446DB1434416 /* Pods.xcconfig */,
 				3DE3F44B44924024B4B77999 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -360,7 +354,7 @@
 				TargetAttributes = {
 					58F9A3B119F6967300D5929F = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = GSX2TRMV6J;
+						DevelopmentTeam = S56GZ64EWS;
 					};
 					58F9A3C619F6967400D5929F = {
 						CreatedOnToolsVersion = 6.1;
@@ -574,16 +568,17 @@
 		};
 		58F9A3D219F6967400D5929F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7187D534E4BF446DB1434416 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = S56GZ64EWS;
 				INFOPLIST_FILE = KokubanForSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT)/KokubanForSwift-Bridging-Header.h";
@@ -594,16 +589,17 @@
 		};
 		58F9A3D319F6967400D5929F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7187D534E4BF446DB1434416 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = S56GZ64EWS;
 				INFOPLIST_FILE = KokubanForSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT)/KokubanForSwift-Bridging-Header.h";
