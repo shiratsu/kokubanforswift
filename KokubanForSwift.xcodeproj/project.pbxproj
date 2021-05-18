@@ -60,6 +60,9 @@
 		F311F9B1264AD9FC00507C53 /* CustomViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311F9B0264AD9FC00507C53 /* CustomViewProtocol.swift */; };
 		F345AEE5264C289F00969588 /* DragableDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F345AEE4264C289F00969588 /* DragableDrawingView.swift */; };
 		F3D248DC26515EEA003B27D1 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D248DB26515EEA003B27D1 /* LineView.swift */; };
+		F3F564672654089A0071D390 /* BoldSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F564662654089A0071D390 /* BoldSlider.swift */; };
+		F3F5646C265413100071D390 /* PenMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5646A265413100071D390 /* PenMenuViewController.swift */; };
+		F3F5646D265413100071D390 /* PenMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3F5646B265413100071D390 /* PenMenuView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +138,9 @@
 		F311F9B0264AD9FC00507C53 /* CustomViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewProtocol.swift; sourceTree = "<group>"; };
 		F345AEE4264C289F00969588 /* DragableDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragableDrawingView.swift; sourceTree = "<group>"; };
 		F3D248DB26515EEA003B27D1 /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
+		F3F564662654089A0071D390 /* BoldSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldSlider.swift; sourceTree = "<group>"; };
+		F3F5646A265413100071D390 /* PenMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenMenuViewController.swift; sourceTree = "<group>"; };
+		F3F5646B265413100071D390 /* PenMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PenMenuView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +300,9 @@
 				F311F9B0264AD9FC00507C53 /* CustomViewProtocol.swift */,
 				F345AEE4264C289F00969588 /* DragableDrawingView.swift */,
 				F3D248DB26515EEA003B27D1 /* LineView.swift */,
+				F3F564662654089A0071D390 /* BoldSlider.swift */,
+				F3F5646A265413100071D390 /* PenMenuViewController.swift */,
+				F3F5646B265413100071D390 /* PenMenuView.xib */,
 			);
 			name = uiview;
 			sourceTree = "<group>";
@@ -388,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58F9A3FD19F6A44700D5929F /* icon-72@2x.png in Resources */,
+				F3F5646D265413100071D390 /* PenMenuView.xib in Resources */,
 				58F9A40719F6A44700D5929F /* pink.png in Resources */,
 				58F9A40619F6A44700D5929F /* green.png in Resources */,
 				58F9A40B19F6A44700D5929F /* Default@2x.png in Resources */,
@@ -438,6 +448,8 @@
 				F311F9A9264AD8F000507C53 /* CustomTextField.swift in Sources */,
 				F311F9AD264AD99100507C53 /* CustomImageView.swift in Sources */,
 				58198DD91A63701D0050F69A /* Common.m in Sources */,
+				F3F564672654089A0071D390 /* BoldSlider.swift in Sources */,
+				F3F5646C265413100071D390 /* PenMenuViewController.swift in Sources */,
 				F345AEE5264C289F00969588 /* DragableDrawingView.swift in Sources */,
 				58F9A3BA19F6967300D5929F /* ViewController.swift in Sources */,
 				F3D248DC26515EEA003B27D1 /* LineView.swift in Sources */,
