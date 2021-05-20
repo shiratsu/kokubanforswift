@@ -59,10 +59,17 @@
 		F311F9AD264AD99100507C53 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311F9AC264AD99100507C53 /* CustomImageView.swift */; };
 		F311F9B1264AD9FC00507C53 /* CustomViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311F9B0264AD9FC00507C53 /* CustomViewProtocol.swift */; };
 		F345AEE5264C289F00969588 /* DragableDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F345AEE4264C289F00969588 /* DragableDrawingView.swift */; };
+		F3CB78592655BD9300D6E34C /* PencilValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB78582655BD9300D6E34C /* PencilValue.swift */; };
 		F3D248DC26515EEA003B27D1 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D248DB26515EEA003B27D1 /* LineView.swift */; };
 		F3F564672654089A0071D390 /* BoldSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F564662654089A0071D390 /* BoldSlider.swift */; };
 		F3F5646C265413100071D390 /* PenMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5646A265413100071D390 /* PenMenuViewController.swift */; };
 		F3F5646D265413100071D390 /* PenMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3F5646B265413100071D390 /* PenMenuView.xib */; };
+		F3F5647A26555EAD0071D390 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5647426555EAC0071D390 /* ColorPicker.swift */; };
+		F3F5647B26555EAD0071D390 /* ColorMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5647526555EAC0071D390 /* ColorMapView.swift */; };
+		F3F5647C26555EAD0071D390 /* BrightnessSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5647626555EAC0071D390 /* BrightnessSlider.swift */; };
+		F3F5647D26555EAD0071D390 /* ColorMapCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5647726555EAC0071D390 /* ColorMapCursor.swift */; };
+		F3F5647E26555EAD0071D390 /* BrightnessCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5647826555EAC0071D390 /* BrightnessCursor.swift */; };
+		F3F5647F26555EAD0071D390 /* ColorfulEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5647926555EAD0071D390 /* ColorfulEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,10 +144,17 @@
 		F311F9AC264AD99100507C53 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		F311F9B0264AD9FC00507C53 /* CustomViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewProtocol.swift; sourceTree = "<group>"; };
 		F345AEE4264C289F00969588 /* DragableDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragableDrawingView.swift; sourceTree = "<group>"; };
+		F3CB78582655BD9300D6E34C /* PencilValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilValue.swift; sourceTree = "<group>"; };
 		F3D248DB26515EEA003B27D1 /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		F3F564662654089A0071D390 /* BoldSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldSlider.swift; sourceTree = "<group>"; };
 		F3F5646A265413100071D390 /* PenMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenMenuViewController.swift; sourceTree = "<group>"; };
 		F3F5646B265413100071D390 /* PenMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PenMenuView.xib; sourceTree = "<group>"; };
+		F3F5647426555EAC0071D390 /* ColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		F3F5647526555EAC0071D390 /* ColorMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMapView.swift; sourceTree = "<group>"; };
+		F3F5647626555EAC0071D390 /* BrightnessSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrightnessSlider.swift; sourceTree = "<group>"; };
+		F3F5647726555EAC0071D390 /* ColorMapCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMapCursor.swift; sourceTree = "<group>"; };
+		F3F5647826555EAC0071D390 /* BrightnessCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrightnessCursor.swift; sourceTree = "<group>"; };
+		F3F5647926555EAD0071D390 /* ColorfulEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorfulEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +303,12 @@
 		58F9A41219F9533200D5929F /* uiview */ = {
 			isa = PBXGroup;
 			children = (
+				F3F5647826555EAC0071D390 /* BrightnessCursor.swift */,
+				F3F5647626555EAC0071D390 /* BrightnessSlider.swift */,
+				F3F5647926555EAD0071D390 /* ColorfulEntity.swift */,
+				F3F5647726555EAC0071D390 /* ColorMapCursor.swift */,
+				F3F5647526555EAC0071D390 /* ColorMapView.swift */,
+				F3F5647426555EAC0071D390 /* ColorPicker.swift */,
 				A9AD224426422837007D32FC /* DrawingView.h */,
 				A9AD224526422837007D32FC /* DrawingView.m */,
 				58198DD71A63701D0050F69A /* Common.h */,
@@ -303,6 +323,7 @@
 				F3F564662654089A0071D390 /* BoldSlider.swift */,
 				F3F5646A265413100071D390 /* PenMenuViewController.swift */,
 				F3F5646B265413100071D390 /* PenMenuView.xib */,
+				F3CB78582655BD9300D6E34C /* PencilValue.swift */,
 			);
 			name = uiview;
 			sourceTree = "<group>";
@@ -445,7 +466,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3F5647B26555EAD0071D390 /* ColorMapView.swift in Sources */,
 				F311F9A9264AD8F000507C53 /* CustomTextField.swift in Sources */,
+				F3F5647F26555EAD0071D390 /* ColorfulEntity.swift in Sources */,
+				F3F5647E26555EAD0071D390 /* BrightnessCursor.swift in Sources */,
+				F3CB78592655BD9300D6E34C /* PencilValue.swift in Sources */,
 				F311F9AD264AD99100507C53 /* CustomImageView.swift in Sources */,
 				58198DD91A63701D0050F69A /* Common.m in Sources */,
 				F3F564672654089A0071D390 /* BoldSlider.swift in Sources */,
@@ -454,8 +479,11 @@
 				58F9A3BA19F6967300D5929F /* ViewController.swift in Sources */,
 				F3D248DC26515EEA003B27D1 /* LineView.swift in Sources */,
 				F311F9B1264AD9FC00507C53 /* CustomViewProtocol.swift in Sources */,
+				F3F5647A26555EAD0071D390 /* ColorPicker.swift in Sources */,
 				58F9A3B819F6967300D5929F /* AppDelegate.swift in Sources */,
 				58E8B57F1A95F296006EF840 /* Line.swift in Sources */,
+				F3F5647C26555EAD0071D390 /* BrightnessSlider.swift in Sources */,
+				F3F5647D26555EAD0071D390 /* ColorMapCursor.swift in Sources */,
 				F311F9872645F8EC00507C53 /* ManageDrawingView.swift in Sources */,
 				A9AD224626422837007D32FC /* DrawingView.m in Sources */,
 			);

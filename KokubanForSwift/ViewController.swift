@@ -91,6 +91,22 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         kokubanMode = true
         
     }
+    
+    
+    /// 　ペンのメニュー
+    func showPencilMenu(){
+            
+        
+        let svc = PenMenuViewController(nibName: "PenMenuView", bundle: nil)
+
+        svc.view.backgroundColor = UIColor.clear // or whatever color.
+        svc.providesPresentationContextTransitionStyle = true
+        svc.definesPresentationContext = true
+        svc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        present(svc, animated: false, completion: nil)
+    }
+    
+    
     @IBAction func showEraseSheet(sender: AnyObject) {
         
         let alert = UIAlertController(title: "どうする？？", message: nil, preferredStyle: UIAlertController.Style.alert)
@@ -216,6 +232,13 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
                 addLine()
             }
             
+            let button9 = UIAlertAction(title: "色と線の太さ", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
+//                kokubanMode = false
+//                yukiMode = false
+//                textMode = true
+                showPencilMenu()
+            }
+            
             
             alert.addAction(button1)
             alert.addAction(button2)
@@ -224,6 +247,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             alert.addAction(button5)
             alert.addAction(button6)
             alert.addAction(button7)
+            alert.addAction(button8)
+            alert.addAction(button9)
             
             present(alert, animated: true, completion: nil)
         }

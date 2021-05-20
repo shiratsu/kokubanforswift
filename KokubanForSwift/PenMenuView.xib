@@ -11,6 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PenMenuViewController" customModule="KokubanForSwift" customModuleProvider="target">
             <connections>
+                <outlet property="backview" destination="Wql-aE-hhh" id="iiV-rt-wCV"/>
+                <outlet property="boldSlider" destination="oAb-Qp-JfY" id="4v3-rj-mIv"/>
+                <outlet property="colorPicker" destination="YBD-HU-5hX" id="hJ7-zT-b08"/>
+                <outlet property="titleColor" destination="zTI-Hp-ert" id="OHE-cd-Nsw"/>
+                <outlet property="titlePenBold" destination="Vz6-ah-zyB" id="Csv-lT-RaO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,62 +24,48 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wql-aE-hhh">
-                    <rect key="frame" x="49" y="65" width="320" height="598"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wql-aE-hhh">
+                    <rect key="frame" x="49" y="65" width="320" height="763"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YBD-HU-5hX" customClass="ColorPicker" customModule="KokubanForSwift" customModuleProvider="target">
+                            <rect key="frame" x="72" y="288" width="176" height="168"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ペンの太さ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz6-ah-zyB">
-                    <rect key="frame" x="164" y="87" width="87" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ペンの太さ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz6-ah-zyB">
+                    <rect key="frame" x="163.5" y="87" width="87" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" systemColor="systemBackgroundColor"/>
                     <color key="highlightedColor" systemColor="systemBackgroundColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ペンの色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTI-Hp-ert">
-                    <rect key="frame" x="172" y="393" width="70" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ペンの色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTI-Hp-ert">
+                    <rect key="frame" x="172" y="269" width="70" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" systemColor="systemBackgroundColor"/>
                     <color key="highlightedColor" systemColor="systemBackgroundColor"/>
                 </label>
-                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="oAb-Qp-JfY">
-                    <rect key="frame" x="114" y="218" width="188" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="oAb-Qp-JfY">
+                    <rect key="frame" x="114" y="171" width="188" height="31"/>
                 </slider>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m1L-1h-41G">
-                    <rect key="frame" x="79" y="450" width="43" height="43"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lzq-40-g8Y">
-                    <rect key="frame" x="187" y="450" width="43" height="43"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ww-0U-2Rs">
-                    <rect key="frame" x="294" y="450" width="43" height="43"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ueM-xZ-7Ev">
-                    <rect key="frame" x="79" y="569" width="43" height="43"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YrY-qV-zfl">
-                    <rect key="frame" x="187" y="569" width="43" height="43"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PLB-a2-TCl">
-                    <rect key="frame" x="294" y="569" width="43" height="43"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Vz6-ah-zyB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7Ws-R6-zFH"/>
+                <constraint firstItem="oAb-Qp-JfY" firstAttribute="top" secondItem="Vz6-ah-zyB" secondAttribute="bottom" constant="63" id="G0j-QO-CIZ"/>
+                <constraint firstItem="Vz6-ah-zyB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="43" id="RRT-n5-ctn"/>
+                <constraint firstItem="zTI-Hp-ert" firstAttribute="top" secondItem="oAb-Qp-JfY" secondAttribute="bottom" constant="68" id="VVx-v0-lKW"/>
+                <constraint firstItem="oAb-Qp-JfY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="116" id="YuF-cF-O28"/>
+                <constraint firstItem="Wql-aE-hhh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="49" id="Zu9-Qw-KoO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Wql-aE-hhh" secondAttribute="bottom" constant="34" id="n4U-18-UDN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oAb-Qp-JfY" secondAttribute="trailing" constant="114" id="qmt-85-tFG"/>
+                <constraint firstItem="zTI-Hp-ert" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qyj-pY-CGy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wql-aE-hhh" secondAttribute="trailing" constant="45" id="shH-Hl-gqp"/>
+                <constraint firstItem="Wql-aE-hhh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="21" id="xW4-7k-6gw"/>
+            </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="104.46428571428571"/>
         </view>
     </objects>
