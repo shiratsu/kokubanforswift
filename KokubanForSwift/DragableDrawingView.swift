@@ -16,23 +16,30 @@ struct Drawing {
 
 import UIKit
 
+
+/// ドラッグと、描くが両方できるやつ
 class DragableDrawingView: UIView {
     
     var isDraw: Bool = false
     
     var currentDrawing: Drawing?
     var finishedDrawings = [Drawing]()
-    var currentColor = UIColor.white
+    var finishedDepth = [CGFloat]()
+    var currentColor: UIColor = UIColor.white
+    var currentDepth: CGFloat = 5
     
     override func draw(_ rect: CGRect) {
+        var i = 0
         for drawing in finishedDrawings {
+            let bold: CGFloat = finishedDepth[i]
             drawing.color.setStroke()
-            stroke(drawing: drawing)
+            stroke(drawing: drawing, depth: bold)
+            i += 1
         }
         
         if let drawing = currentDrawing {
             drawing.color.setStroke()
-            stroke(drawing: drawing)
+            stroke(drawing: drawing,depth: PencilValue.penBold)
         }
     }
     
@@ -110,9 +117,12 @@ class DragableDrawingView: UIView {
         currentColor = color
     }
     
-    func stroke(drawing: Drawing) {
+    
+    /// 実際に描く処理
+    /// - Parameter drawing: <#drawing description#>
+    func stroke(drawing: Drawing, depth: CGFloat) {
         let path = UIBezierPath()
-        path.lineWidth = 10.0
+        path.lineWidth = depth
         path.lineCapStyle = .round
         path.lineJoinStyle = .round
         
@@ -129,3 +139,15 @@ class DragableDrawingView: UIView {
     }
 }
 
+extension DragableDrawingView: PenMenuProtocol{
+    
+    
+    /// ペンの情報をアップデート
+    func updatePencilSetting() {
+        currentColor = PencilValue.penColor
+        currentDepth = PencilValue.penBold
+    }
+    
+    
+    
+}

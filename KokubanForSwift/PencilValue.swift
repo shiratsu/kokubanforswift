@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+// ペンの情報を格納
+struct PencilValue {
+    static var penBold: CGFloat = 5
+    static var penColor: UIColor = UIColor.white
+}

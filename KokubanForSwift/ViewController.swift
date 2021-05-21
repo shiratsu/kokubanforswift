@@ -98,7 +98,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             
         
         let svc = PenMenuViewController(nibName: "PenMenuView", bundle: nil)
-
+        svc.delegatePenMenu = curDrawingView
         svc.view.backgroundColor = UIColor.clear // or whatever color.
         svc.providesPresentationContextTransitionStyle = true
         svc.definesPresentationContext = true
