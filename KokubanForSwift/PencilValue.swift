@@ -13,3 +13,10 @@ struct PencilValue {
     static var penBold: CGFloat = 5
     static var penColor: UIColor = UIColor.white
 }
+
+// 文字の太さと色
+struct StringValue {
+    
+    static var penBold: CGFloat = 5
+    static var penColor: UIColor = UIColor.white
+}

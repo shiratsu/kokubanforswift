@@ -11,8 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PenMenuViewController" customModule="KokubanForSwift" customModuleProvider="target">
             <connections>
-                <outlet property="backview" destination="Wql-aE-hhh" id="iiV-rt-wCV"/>
                 <outlet property="boldSlider" destination="oAb-Qp-JfY" id="4v3-rj-mIv"/>
+                <outlet property="colorButton" destination="GwK-08-DUM" id="uge-Xi-XVA"/>
                 <outlet property="colorPicker" destination="YBD-HU-5hX" id="hJ7-zT-b08"/>
                 <outlet property="titleColor" destination="zTI-Hp-ert" id="OHE-cd-Nsw"/>
                 <outlet property="titlePenBold" destination="Vz6-ah-zyB" id="Csv-lT-RaO"/>
@@ -20,20 +20,16 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" alpha="0.59999999999999998" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view clearsContextBeforeDrawing="NO" alpha="0.90000000000000002" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wql-aE-hhh">
-                    <rect key="frame" x="49" y="65" width="320" height="763"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YBD-HU-5hX" customClass="ColorPicker" customModule="KokubanForSwift" customModuleProvider="target">
-                            <rect key="frame" x="72" y="288" width="176" height="168"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YBD-HU-5hX" customClass="ColorPicker" customModule="KokubanForSwift" customModuleProvider="target">
+                    <rect key="frame" x="20" y="313" width="374" height="250"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="yOx-9h-AS4"/>
+                    </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ペンの太さ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz6-ah-zyB">
                     <rect key="frame" x="163.5" y="87" width="87" height="21"/>
@@ -42,29 +38,44 @@
                     <color key="highlightedColor" systemColor="systemBackgroundColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ペンの色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTI-Hp-ert">
-                    <rect key="frame" x="172" y="269" width="70" height="21"/>
+                    <rect key="frame" x="172" y="260" width="70" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" systemColor="systemBackgroundColor"/>
                     <color key="highlightedColor" systemColor="systemBackgroundColor"/>
                 </label>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="oAb-Qp-JfY">
-                    <rect key="frame" x="114" y="171" width="188" height="31"/>
+                    <rect key="frame" x="28" y="171" width="358" height="31"/>
                 </slider>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GwK-08-DUM">
+                    <rect key="frame" x="341" y="32" width="48" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="Bt5-NT-BWx"/>
+                        <constraint firstAttribute="width" constant="48" id="Nrv-Wd-5tA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <state key="normal" title="Close">
+                        <color key="titleColor" systemColor="systemBackgroundColor"/>
+                    </state>
+                    <connections>
+                        <action selector="closeModalWithSender:" destination="-1" eventType="touchUpInside" id="gir-2Z-CCm"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GwK-08-DUM" secondAttribute="trailing" constant="25" id="3DF-Ls-5vi"/>
+                <constraint firstItem="YBD-HU-5hX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="5fe-55-Aeh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oAb-Qp-JfY" secondAttribute="trailing" constant="30" id="6Om-Lz-L6E"/>
                 <constraint firstItem="Vz6-ah-zyB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7Ws-R6-zFH"/>
+                <constraint firstItem="oAb-Qp-JfY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="7rA-V7-lzF"/>
                 <constraint firstItem="oAb-Qp-JfY" firstAttribute="top" secondItem="Vz6-ah-zyB" secondAttribute="bottom" constant="63" id="G0j-QO-CIZ"/>
                 <constraint firstItem="Vz6-ah-zyB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="43" id="RRT-n5-ctn"/>
-                <constraint firstItem="zTI-Hp-ert" firstAttribute="top" secondItem="oAb-Qp-JfY" secondAttribute="bottom" constant="68" id="VVx-v0-lKW"/>
-                <constraint firstItem="oAb-Qp-JfY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="116" id="YuF-cF-O28"/>
-                <constraint firstItem="Wql-aE-hhh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="49" id="Zu9-Qw-KoO"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Wql-aE-hhh" secondAttribute="bottom" constant="34" id="n4U-18-UDN"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oAb-Qp-JfY" secondAttribute="trailing" constant="114" id="qmt-85-tFG"/>
+                <constraint firstItem="zTI-Hp-ert" firstAttribute="top" secondItem="oAb-Qp-JfY" secondAttribute="bottom" constant="59" id="VVx-v0-lKW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YBD-HU-5hX" secondAttribute="trailing" constant="20" id="bfz-Zu-Se8"/>
+                <constraint firstItem="GwK-08-DUM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="32" id="bp3-9K-fFh"/>
+                <constraint firstItem="YBD-HU-5hX" firstAttribute="top" secondItem="zTI-Hp-ert" secondAttribute="bottom" constant="32" id="i37-dJ-5tz"/>
                 <constraint firstItem="zTI-Hp-ert" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qyj-pY-CGy"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wql-aE-hhh" secondAttribute="trailing" constant="45" id="shH-Hl-gqp"/>
-                <constraint firstItem="Wql-aE-hhh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="21" id="xW4-7k-6gw"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="104.46428571428571"/>
         </view>

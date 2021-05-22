@@ -14,8 +14,11 @@ struct Drawing {
     var points = [CGPoint]()
 }
 
-import UIKit
-
+extension Array {
+    subscript (safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
 
 /// ドラッグと、描くが両方できるやつ
 class DragableDrawingView: UIView {
@@ -31,10 +34,13 @@ class DragableDrawingView: UIView {
     override func draw(_ rect: CGRect) {
         var i = 0
         for drawing in finishedDrawings {
-            let bold: CGFloat = finishedDepth[i]
-            drawing.color.setStroke()
-            stroke(drawing: drawing, depth: bold)
-            i += 1
+            if let bold: CGFloat = finishedDepth[safe: i]{
+                drawing.color.setStroke()
+                stroke(drawing: drawing, depth: bold)
+                i += 1
+            }
+            
+            
         }
         
         if let drawing = currentDrawing {
@@ -90,6 +96,7 @@ class DragableDrawingView: UIView {
                 let location = touch.location(in: self)
                 drawing.points.append(location)
                 finishedDrawings.append(drawing)
+                finishedDepth.append(PencilValue.penBold)
             }
             currentDrawing = nil
             setNeedsDisplay()

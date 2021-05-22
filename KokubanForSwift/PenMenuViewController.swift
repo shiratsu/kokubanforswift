@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum PenMenuMode: Int{
+    case pencil = 1
+    case string = 2
+}
+
 class PenMenuViewController: UIViewController {
 
     @IBOutlet weak var backview: UIView!
@@ -15,8 +20,16 @@ class PenMenuViewController: UIViewController {
     @IBOutlet weak var titleColor: UILabel!
     @IBOutlet weak var boldSlider: UISlider!
     @IBOutlet weak var colorPicker: ColorPicker!
+    @IBOutlet weak var colorButton: UIButton!
     
     var colorSpace: HRColorSpace = .sRGB
+    
+    // ペンの値
+    var penBold: Float = 5
+    var penColor: UIColor = UIColor.white
+    
+    var intMode: Int = 0
+    var strMode: String = "ペン"
     
     weak var delegatePenMenu: PenMenuProtocol?
     
@@ -26,29 +39,29 @@ class PenMenuViewController: UIViewController {
         
         boldSlider.minimumValue = 0.0
         boldSlider.maximumValue = 10.0
-        boldSlider.value = Float(PencilValue.penBold)
+        boldSlider.value = penBold
         
-        let ciColor = CIColor(cgColor: PencilValue.penColor.cgColor)
+        let ciColor = CIColor(cgColor: penColor.cgColor)
         
         boldSlider.addTarget(self, action: #selector(sliderDidChangeValue(_:)), for: .valueChanged)
 
         colorPicker.addTarget(self, action: #selector(self.handleColorChanged(picker:)), for: .valueChanged)
         colorPicker.set(color: UIColor(displayP3Red: ciColor.red, green: ciColor.green, blue: ciColor.blue, alpha: ciColor.alpha), colorSpace: colorSpace)
         
-        view.isUserInteractionEnabled = true
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(closeThisPage))
-        view.addGestureRecognizer(tap)
         
         // Do any additional setup after loading the view.
     }
     
-    // このページ閉じる
-    @objc func closeThisPage(gesture: UITapGestureRecognizer) -> Void {
-    //Write your code here
+    
+    /// modalを閉じる
+    /// - Parameter sender: <#sender description#>
+    @IBAction func closeModal(sender: AnyObject) {
+        
         dismiss(animated: false, completion: nil)
     }
-
+    
+    
     
     /// ペンの太さを変えた時
     /// - Parameter sender: <#sender description#>

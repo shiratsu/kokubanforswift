@@ -94,16 +94,20 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     
     /// 　ペンのメニュー
-    func showPencilMenu(){
+    func showPencilMenu(_ intMode: Int, strKey: String){
             
         
         let svc = PenMenuViewController(nibName: "PenMenuView", bundle: nil)
         svc.delegatePenMenu = curDrawingView
-        svc.view.backgroundColor = UIColor.clear // or whatever color.
-        svc.providesPresentationContextTransitionStyle = true
+        svc.view.backgroundColor = UIColor.black // or whatever color.
+//        svc.providesPresentationContextTransitionStyle = true
         svc.definesPresentationContext = true
-        svc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        present(svc, animated: false, completion: nil)
+        svc.modalPresentationStyle = .custom
+        svc.transitioningDelegate = self
+        svc.intMode = intMode
+        svc.intMode = intMode
+        svc.strMode = strKey
+        present(svc, animated: true, completion: nil)
     }
     
     
@@ -236,7 +240,14 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
 //                kokubanMode = false
 //                yukiMode = false
 //                textMode = true
-                showPencilMenu()
+                showPencilMenu(PenMenuMode.pencil.rawValue, strKey: "ペン")
+            }
+            
+            let button10 = UIAlertAction(title: "文字の色と太さ", style: UIAlertAction.Style.default) { [self] (okSelected) -> Void in
+//                kokubanMode = false
+//                yukiMode = false
+//                textMode = true
+                showPencilMenu(PenMenuMode.string.rawValue, strKey: "文字")
             }
             
             
@@ -249,6 +260,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             alert.addAction(button7)
             alert.addAction(button8)
             alert.addAction(button9)
+            alert.addAction(button10)
             
             present(alert, animated: true, completion: nil)
         }
@@ -276,8 +288,10 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
         // 適当な物体を追加
         let iv = CustomTextField(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
+        iv.font?.withSize(StringValue.penBold)
+        iv.textColor = StringValue.penColor
 
-        iv.backgroundColor = .white
+        iv.backgroundColor = .clear
         iv.delegate = self
         
         curDrawingView.addSubview(iv)
@@ -597,5 +611,19 @@ extension ViewController: UITextFieldDelegate{
         txtField.text = text
         txtField.sizeToFit()
         return txtField.frame.size.width
+    }
+}
+
+class HalfSizePresentationController: UIPresentationController {
+    override var frameOfPresentedViewInContainerView: CGRect {
+        guard let bounds = containerView?.bounds else { return .zero }
+        return CGRect(x: 0, y: 100, width: bounds.width, height: bounds.height-100)
+    }
+}
+
+extension ViewController: UIViewControllerTransitioningDelegate{
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return HalfSizePresentationController(presentedViewController: presented, presenting: presentingViewController)
     }
 }
