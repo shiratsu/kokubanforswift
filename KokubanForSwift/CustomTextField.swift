@@ -24,12 +24,14 @@ class CustomTextField: UITextField {
         super.init(frame: frame)
 //        setupTextChangeNotification()
         setUpDragable()
+        setUpAccessoryView()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 //        setupTextChangeNotification()
         setUpDragable()
+        setUpAccessoryView()
     }
     
     func setUpDragable(){
@@ -55,51 +57,90 @@ class CustomTextField: UITextField {
     }
     
     
-//    func enableDoubleClick(){
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
-//        tap.numberOfTapsRequired = 2
-//        addGestureRecognizer(tap)
-//    }
-//
-//    @objc func doubleTapped() {
-//        // do something here
-//    }
+    /// ツールを一緒に表示する
+    func setUpAccessoryView(){
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        
+        let button1 = UIBarButtonItem(title: "＜", style: UIBarButtonItem.Style.done, target: self, action: #selector(prevChar))
+        let button2 = UIBarButtonItem(title: "＞", style: UIBarButtonItem.Style.done, target: self, action: #selector(nextChar))
+        let button3 = UIBarButtonItem(title: "C_Line", style: UIBarButtonItem.Style.done, target: self, action: #selector(addCancelLine))
+        let button4 = UIBarButtonItem(title: "U_Line", style: UIBarButtonItem.Style.done, target: self, action: #selector(addUnderLine))
+        
+        toolBar.setItems([button1, button2, button3,button4], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        toolBar.sizeToFit()
+
+        inputAccessoryView = toolBar
+    }
     
-//    func setupTextChangeNotification() {
-//        NotificationCenter.default.addObserver(
-//            forName: UITextField.textDidChangeNotification,
-//            object: self,
-//            queue: nil) { (notification) in
-//                UIView.animate(withDuration: 0.05, animations: {
-//                    self.invalidateIntrinsicContentSize()
-//                })
-//        }
-//    }
-//
-//    deinit {
-//        NotificationCenter.default.removeObserver(self)
-//    }
     
-//    override var intrinsicContentSize: CGSize {
-//        if isEditing {
-//            if let text = text,
-//                !text.isEmpty {
-//                // Convert to NSString to use size(attributes:)
-//                let string = text as NSString
-//                // Calculate size for current text
-//                var size = string.size(withAttributes: typingAttributes)
-//                // Add margin to calculated size
-//                size.width += 10
-//                return size
-//            } else {
-//                // You can return some custom size in case of empty string
-//                return super.intrinsicContentSize
-//            }
-//        } else {
-//            return super.intrinsicContentSize
-//        }
-//    }
+
 }
+
+
+extension CustomTextField{
+    
+    
+    /// 前の文字
+    @objc func prevChar(){
+        if let selectedRange = selectedTextRange {
+
+            let cursorPosition = offset(from: beginningOfDocument, to: selectedRange.start)
+            // and only if the new position is valid
+            if let newPosition = position(from: selectedRange.start, offset: cursorPosition-1) {
+
+                // set the new position
+                selectedTextRange = textRange(from: newPosition, to: newPosition)
+            }
+            
+        }
+    }
+    
+    // 次の文字
+    @objc func nextChar(){
+        if let selectedRange = selectedTextRange {
+
+            let cursorPosition = offset(from: beginningOfDocument, to: selectedRange.start)
+            // and only if the new position is valid
+            if let newPosition = position(from: selectedRange.start, offset: cursorPosition+1) {
+
+                // set the new position
+                selectedTextRange = textRange(from: newPosition, to: newPosition)
+            }
+            
+        }
+    }
+    
+    
+    /// 打ち消し戦
+    @objc func addCancelLine(){
+        
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: text ?? "")
+//        // 全体に共通して付けたいレイアウトを設定
+//        attributeString.addAttribute(.font,value: UIFont.systemFont(ofSize: 15), range: NSMakeRange(0, attributeString.length))
+
+        // 取り消し線部分の設定
+        attributeString.addAttributes([
+            .foregroundColor : UIColor.red,
+            // 取り消し線の太さを決める
+            .strikethroughStyle: 1
+        // 取り消し線を反映したい部分を設定
+        // NSMakeRange(何文字目から, 何文字間)
+        ], range: NSMakeRange(1, attributeString.length))
+        
+        attributedText = attributeString
+    }
+    
+    /// 下線
+    @objc func addUnderLine(){
+        
+    }
+}
+
 
 
 /// TextFieldのアクションを定義

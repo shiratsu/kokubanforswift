@@ -292,6 +292,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         iv.textColor = StringValue.penColor
 
         iv.backgroundColor = .clear
+        iv.borderStyle = .bezel
+        iv.layer.borderColor = UIColor.white.cgColor
         iv.delegate = self
         
         curDrawingView.addSubview(iv)
@@ -614,15 +616,25 @@ extension ViewController: UITextFieldDelegate{
     }
 }
 
+
+/// カスタムアニメーションクラスを定義
 class HalfSizePresentationController: UIPresentationController {
     override var frameOfPresentedViewInContainerView: CGRect {
         guard let bounds = containerView?.bounds else { return .zero }
-        return CGRect(x: 0, y: 100, width: bounds.width, height: bounds.height-100)
+        return CGRect(x: 0, y: 80, width: bounds.width, height: bounds.height-80)
     }
 }
 
+
 extension ViewController: UIViewControllerTransitioningDelegate{
     
+    
+    /// カスタムアニメーション用
+    /// - Parameters:
+    ///   - presented: <#presented description#>
+    ///   - presenting: <#presenting description#>
+    ///   - source: <#source description#>
+    /// - Returns: <#description#>
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return HalfSizePresentationController(presentedViewController: presented, presenting: presentingViewController)
     }
